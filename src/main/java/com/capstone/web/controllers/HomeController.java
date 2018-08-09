@@ -12,6 +12,7 @@ public class HomeController
     {
         System.out.println("init homeController");
     }
+
     @RequestMapping("/")
     public String showHome(HttpSession session)
     {
