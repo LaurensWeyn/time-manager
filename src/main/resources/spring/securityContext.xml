@@ -2,16 +2,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:security="http://www.springframework.org/schema/security"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-          http://www.springframework.org/schema/beans/spring-beans-4.1.4.xsd
-          http://www.springframework.org/schema/security
-          http://www.springframework.org/schema/security/spring-security-4.1.4.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-      <security:authentication-manager>
-        <security:authentication-provider>
-          <security:user-service>
-            <security:user name="laurens" authorities="user,admin" password="password"/>
-          </security:user-service>
-        </security:authentication-provider>
-      </security:authentication-manager>
+  <!--This file configures the login system-->
+
+  <security:authentication-manager>
+    <security:authentication-provider>
+      <security:user-service>
+        <security:user name="laurens" authorities="user,admin" password="password"/>
+      </security:user-service>
+    </security:authentication-provider>
+  </security:authentication-manager>
+
+  <!--This controls what pages you need to be logged in to access-->
+  <security:http use-expressions="true">
+    <security:intercept-url pattern="/**" access="denyAll"/><!--By default, for securrity, all urls require login-->
+    <security:form-login/><!--In charge of the actual login page-->
+  </security:http>
 </beans>
