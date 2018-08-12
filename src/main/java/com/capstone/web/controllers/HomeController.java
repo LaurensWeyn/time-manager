@@ -31,10 +31,4 @@ public class HomeController
 
         return "dashboard";//maps to jsps/[string].jsp
     }
-
-    public static void main(String[] args)
-    {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        System.out.println(encoder.encode("password"));
-    }
 }
