@@ -49,6 +49,7 @@
                 </div>
                 <div class="card-body">
                     <form name = "f" action="${pageContext.request.contextPath}/login" method="POST">
+                        <%--TODO add autofocus JavaScript to username field--%>
                         <div class="form-group">
                             <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                         </div>
