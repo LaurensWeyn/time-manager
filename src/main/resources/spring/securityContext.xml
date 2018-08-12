@@ -8,13 +8,18 @@
   <!--This file configures the login system-->
 
   <security:authentication-manager>
-    <security:authentication-provider>
+    <!--Hardcoded provider-->
+    <!--<security:authentication-provider>
       <security:user-service>
-        <security:user name="laurens" authorities="user,admin" password="$2a$10$xsMYjdaIo89RxwjOSe8ZouemXBAD3RJAhvSz8HmhYbSR.zxHs23yW"/> <!--'password' literally in BCrypt-->
+        <security:user name="laurens" authorities="user,admin" password="$2a$10$xsMYjdaIo89RxwjOSe8ZouemXBAD3RJAhvSz8HmhYbSR.zxHs23yW"/>
       </security:user-service>
       <security:password-encoder ref="passwordEncoder"/>
+    </security:authentication-provider>-->
+    <!--Database provider-->
+    <security:authentication-provider>
+      <security:jdbc-user-service data-source-ref="dataSource"/>
+      <security:password-encoder ref="passwordEncoder"/>
     </security:authentication-provider>
-
   </security:authentication-manager>
 
   <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
