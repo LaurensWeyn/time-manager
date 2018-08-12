@@ -10,14 +10,26 @@
   <security:authentication-manager>
     <security:authentication-provider>
       <security:user-service>
-        <security:user name="laurens" authorities="user,admin" password="password"/>
+        <security:user name="laurens" authorities="user,admin" password="$2a$10$xsMYjdaIo89RxwjOSe8ZouemXBAD3RJAhvSz8HmhYbSR.zxHs23yW"/> <!--'password' literally in BCrypt-->
       </security:user-service>
+      <security:password-encoder ref="passwordEncoder"/>
     </security:authentication-provider>
+
   </security:authentication-manager>
+
+  <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+  </bean>
 
   <!--This controls what pages you need to be logged in to access-->
   <security:http use-expressions="true">
-    <security:intercept-url pattern="/**" access="denyAll"/><!--By default, for securrity, all urls require login-->
+    <!--permitAll: list all urls that don't require login here-->
+    <security:intercept-url pattern="/" access="permitAll"/>
+    <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
+    <security:intercept-url pattern="/static/**" access="permitAll"/>
+    <!--isAuthenticated(): pages for all logged in users-->
+    <security:intercept-url pattern="/dashboard" access="isAuthenticated()"/><!--TODO-->
+    <!--By default, for securrity, all urls require login. Leave at bottom as 'fallback'-->
+    <security:intercept-url pattern="/**" access="denyAll"/>
     <security:form-login/><!--In charge of the actual login page-->
   </security:http>
 </beans>

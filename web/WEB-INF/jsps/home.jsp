@@ -12,5 +12,6 @@
   ${Key}<br><%--key inject way. prefered for HTML.--%>
   <c:out value="${Key}"/><%--c:out way. This is prefered for non-HTML as it stops HTML injection--%>
 
+  <a href="/dashboard">Go to user dashboard</a>.
 </body>
 </html>
