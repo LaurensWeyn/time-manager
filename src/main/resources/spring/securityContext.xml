@@ -29,12 +29,20 @@
     <!--permitAll: list all urls that don't require login here-->
     <security:intercept-url pattern="/" access="permitAll"/>
     <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
-    <security:intercept-url pattern="/login" access="permitAll"/>
     <security:intercept-url pattern="/static/**" access="permitAll"/>
+
+    <security:intercept-url pattern="/login" access="permitAll"/>
+    <security:intercept-url pattern="/createAccount" access="permitAll"/>
+    <security:intercept-url pattern="/doCreateAccount" access="permitAll"/>
+
     <!--isAuthenticated(): pages for all logged in users-->
     <security:intercept-url pattern="/dashboard" access="isAuthenticated()"/><!--TODO-->
+
     <!--By default, for securrity, all urls require login. Leave at bottom as 'fallback'-->
     <security:intercept-url pattern="/**" access="denyAll"/>
-    <security:form-login login-page="/login" authentication-failure-url="/login?error=true"/><!--In charge of the actual login page-->
+
+
+    <!--In charge of the actual login page-->
+    <security:form-login login-page="/login" authentication-failure-url="/login?error=true"/>
   </security:http>
 </beans>

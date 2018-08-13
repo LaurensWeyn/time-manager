@@ -2,7 +2,26 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>STMS - Create Account</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap.min.css">
+    <script src="${pageContext.request.contextPath}/static/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/bootstrap.min.js"></script>
+    <style>
+        .lightText {
+            color: #959595;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: black;
+        }
+
+        .page-header {
+            padding-top: 50px;
+        }
+    </style>
 </head>
 <body>
 
@@ -23,19 +42,20 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                        <sf:form method="post" action="${pageContext.request.contextPath}/doCreateAccount" modelAttribute="user">
+                    <%--sf:form works like HTML forms, but is needed for fancy Spring stuff to work. 'id' becomes 'path', moddelAttribute is method arggument name--%>
+                    <sf:form method="post" action="${pageContext.request.contextPath}/doCreateAccount" modelAttribute="user">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Username</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Enter Username">
+                            <sf:input type="text" class="form-control" placeholder="Enter Username" path="username"/>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Password</span>
                             </div>
-                            <input type="password" id="pass1" class="form-control" placeholder="Password">
-                            <input type="password" id="pass2" class="form-control" placeholder="Confirm Password">
+                            <sf:input type="password" class="form-control" placeholder="Password" path="pass1"/>
+                            <sf:input type="password" class="form-control" placeholder="Confirm Password" path="pass2"/>
                         </div>
                         <button type="submit" class="btn btn-default">Sign Up</button>
                     </sf:form>
