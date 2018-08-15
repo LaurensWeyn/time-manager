@@ -1,0 +1,17 @@
+.progress-label {
+    float: left;
+    margin-right: 1em;
+    /*max-width: 0.125% !important;*/
+    /*width: 0.125% !important;*/
+    max-width: 260px !important;
+    width: 260px !important;
+}
+.progress-buttons{
+    float: right;
+    margin-left: 1em;
+}
+
+.progress {
+    float: left;
+    width: 41% !important;
+}
