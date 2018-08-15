@@ -2,7 +2,7 @@ package com.capstone.web.forms;
 
 import org.springframework.stereotype.Component;
 
-public class User
+public class UserForm
 {
     private String username;
     private String pass1;
@@ -10,11 +10,11 @@ public class User
     private boolean enabled = false;
     private String authority;
 
-    public User()
+    public UserForm()
     {
     }
 
-    public User(String username, String pass1, String pass2, boolean enabled, String authority)
+    public UserForm(String username, String pass1, String pass2, boolean enabled, String authority)
     {
         this.username = username;
         this.pass1 = pass1;

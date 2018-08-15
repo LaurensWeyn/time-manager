@@ -10,5 +10,5 @@
 
   <!--DAO beans-->
   <!--TODO-->
-  <!--<bean name="xDAO" class="y"/>-->
+  <bean name="userDAO" class="com.capstone.db.dao.UserDao"/>
 </beans>

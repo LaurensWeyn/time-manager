@@ -3,10 +3,9 @@ package com.capstone.web.controllers;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.capstone.web.forms.User;
+import com.capstone.web.forms.UserForm;
 
 @Controller
 public class LoginController
@@ -20,12 +19,12 @@ public class LoginController
     @RequestMapping("/createAccount")
     public String showCreateAccountPage(Model model)
     {
-        model.addAttribute("user", new User());//by default, navigate here with a blank User. (fields stay filled in on failure)
+        model.addAttribute("user", new UserForm());//by default, navigate here with a blank User. (fields stay filled in on failure)
         return "createAccount";
     }
 
     @RequestMapping("/doCreateAccount")
-    public String createAccount(User user)
+    public String createAccount(UserForm user)
     {
         System.out.println("Found user details " + user);
         return "createAccount";//TODO success page
