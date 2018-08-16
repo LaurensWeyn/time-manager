@@ -9,6 +9,7 @@
   <!--Master context for 'user' (our) beans that we can use regardless of the 'master' context. Not that we have more than one of those right now...-->
 
   <!--DAO beans-->
-  <!--TODO-->
   <bean name="userDAO" class="com.capstone.db.dao.UserDao"/>
+  <bean name="CourseDAO" class="com.capstone.db.dao.CourseDao"/>
+  <bean name="TimeslotDAO" class="com.capstone.db.dao.TimeslotDao"/>
 </beans>

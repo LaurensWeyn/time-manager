@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+
 public class User
 {
     private String username;
@@ -13,6 +16,13 @@ public class User
     {
         this.username = username;
         authorities = new ArrayList<>();
+    }
+    public User(Authentication auth)
+    {
+        this.username = auth.getName();
+        authorities = new ArrayList<>();
+        for(GrantedAuthority authority:auth.getAuthorities())
+            authorities.add(authority.getAuthority());
     }
 
     public String getUsername()

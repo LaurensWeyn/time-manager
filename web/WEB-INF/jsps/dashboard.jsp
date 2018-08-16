@@ -18,41 +18,7 @@
           <div class="col-sm-4">
               <h3>Today</h3>
               <div class="container-fluid">
-                  <h4>Schedule</h4>
-                  <div class="card">
-                      <div class="card">
-                          <a href="/" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
-                          <div class="card-body">09:00<br><div class="schedule-text">Computer Science</div></div>
-                      </div>
-                      <div class="card">
-                        <a href="/" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
-                          <div class="card-body">10:00<br><div class="schedule-text">Games Development</div></div>
-                      </div>
-                      <div class="card">
-                        <a href="/" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
-                          <div class="card-body">11:00<br><div class="schedule-text">Physics</div></div>
-                      </div>
-                      <div class="card">
-                        <a href="/" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
-                          <div class="card-body">12:00<br><div class="schedule-text">EEE</div></div>
-                      </div>
-                      <div class="card">
-                        <a href="/" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
-                          <div class="card-body">13:00<br><div class="schedule-text"></div></div>
-                      </div>
-                      <div class="card">
-                        <a href="/" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
-                          <div class="card-body">14:00<br><div class="schedule-text">Psychology</div></div>
-                      </div>
-                      <div class="card">
-                        <a href="/" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
-                          <div class="card-body">15:00<br><div class="schedule-text">Physics Tut</div></div>
-                      </div>
-                      <div class="card">
-                        <a href="/" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
-                          <div class="card-body">16:00<br><div class="schedule-text">Physics Tut</div></div>
-                      </div>
-                  </div>
+                  <%@include file="component/classSchedule.jsp"%>
               </div>
               <div class="container-fluid">
                   <h4>Due</h4>

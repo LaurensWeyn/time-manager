@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: stms
 -- ------------------------------------------------------
--- Server version	5.7.17-log
+-- Server version	8.0.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+SET NAMES utf8 ;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,13 +21,15 @@
 
 DROP TABLE IF EXISTS `authorities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `authorities` (
-  `username` varchar(60) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(60) DEFAULT NULL,
   `authority` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`username`),
-  CONSTRAINT `fk_username` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `fk_username` (`username`),
+  CONSTRAINT `fk_username` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,8 +38,98 @@ CREATE TABLE `authorities` (
 
 LOCK TABLES `authorities` WRITE;
 /*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
-INSERT INTO `authorities` VALUES ('admin','admin');
+INSERT INTO `authorities` VALUES (1,'admin','admin'),(2,'someUser','ROLE_USER');
 /*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `courses`
+--
+
+DROP TABLE IF EXISTS `courses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+SET character_set_client = utf8mb4 ;
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(60) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `code` varchar(45) DEFAULT NULL,
+  `priority` int(11) DEFAULT NULL,
+  `color` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`,`username`),
+  KEY `fk_course_user_idx` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `courses`
+--
+
+LOCK TABLES `courses` WRITE;
+/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` VALUES (1,'admin','Computer Science','CSC3003S',1,NULL),(2,'admin','Mathematics','MAM1008S',2,NULL);
+/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events`
+--
+
+DROP TABLE IF EXISTS `events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+SET character_set_client = utf8mb4 ;
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `username` varchar(60) DEFAULT NULL,
+  `courseid` int(11) DEFAULT NULL,
+  `due` int(11) DEFAULT NULL,
+  `progress` int(11) DEFAULT NULL,
+  `description` varchar(512) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `color` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_event_user_idx` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events`
+--
+
+LOCK TABLES `events` WRITE;
+/*!40000 ALTER TABLE `events` DISABLE KEYS */;
+/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `timeslots`
+--
+
+DROP TABLE IF EXISTS `timeslots`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+SET character_set_client = utf8mb4 ;
+CREATE TABLE `timeslots` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `courseid` int(11) DEFAULT NULL,
+  `username` varchar(60) DEFAULT NULL,
+  `starttime` int(11) DEFAULT NULL,
+  `endtime` int(11) DEFAULT NULL,
+  `daysofweek` varchar(7) DEFAULT NULL,
+  `venue` varchar(100) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `timeslots_username_index` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `timeslots`
+--
+
+LOCK TABLES `timeslots` WRITE;
+/*!40000 ALTER TABLE `timeslots` DISABLE KEYS */;
+INSERT INTO `timeslots` VALUES (1,2,'admin',480,525,'YNYNNNN','AC Jordan LT3A',1),(2,1,'admin',540,585,'YYYYYNN','Menzies 10',2);
+/*!40000 ALTER TABLE `timeslots` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -46,7 +138,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `users` (
   `username` varchar(60) NOT NULL,
   `password` varchar(60) DEFAULT NULL,
@@ -61,7 +153,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('admin','$2a$10$xsMYjdaIo89RxwjOSe8ZouemXBAD3RJAhvSz8HmhYbSR.zxHs23yW',1);
+INSERT INTO `users` VALUES ('admin','$2a$10$xsMYjdaIo89RxwjOSe8ZouemXBAD3RJAhvSz8HmhYbSR.zxHs23yW',1),('someUser','$2a$10$.frFv0e.42v0Y4EO.W8/.OPOrEA/EpIU6QCtl2fVAW0iYkmfJw4y6',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -74,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-12 15:46:10
+-- Dump completed on 2018-08-16 20:29:23
