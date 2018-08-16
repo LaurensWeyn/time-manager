@@ -13,5 +13,10 @@
 
 .progress {
     float: left;
-    width: 41% !important;
+    width: 62% !important;
+}
+
+.schedule-text {
+    float: left;
+    margin-left: 2em;
 }
