@@ -77,7 +77,7 @@
                           <div class="progress-bar" style="width:70%">70%</div>
                       </div>
                       <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                      <a href="/" type="button" class="btn btn-info">Edit</a>
+                      <a href="/assignment" type="button" class="btn btn-info">Edit</a>
                       </div>
                       <br>
                       <h5>Due: 10AM</h5>
@@ -91,7 +91,7 @@
                               <div class="progress-bar" style="width:95%">95%</div>
                           </div>
                           <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
+                          <a href="/assignment" type="button" class="btn btn-info">Edit</a>
                           </div>
                           <br>
                           <h5>Due: 11AM</h5>
@@ -106,7 +106,7 @@
                               <div class="progress-bar bg-warning" style="width:50%">50%</div>
                           </div>
                           <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
+                          <a href="/assignment" type="button" class="btn btn-info">Edit</a>
                           </div>
                           <br>
                           <h5>Due: 10AM</h5>
@@ -120,7 +120,7 @@
                               <div class="progress-bar" style="width:30%">30%</div>
                           </div>
                           <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
+                          <a href="/assignment" type="button" class="btn btn-info">Edit</a>
                           </div>
                           <br>
                           <h5>Due: 9AM</h5>
@@ -135,7 +135,7 @@
                               <div class="progress-bar bg-danger" style="width:0%">0%</div>
                           </div>
                           <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
+                          <a href="/assignment" type="button" class="btn btn-info">Edit</a>
                           </div>
                           <br>
                           <h5>Due: 6PM</h5>
@@ -150,7 +150,7 @@
                               <div class="progress-bar bg-danger" style="width:15%">15%</div>
                           </div>
                           <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
+                          <a href="/assignment" type="button" class="btn btn-info">Edit</a>
                           </div>
                           <br>
                           <h5>Due: 2PM</h5>

@@ -37,6 +37,7 @@
 
     <!--isAuthenticated(): pages for all logged in users-->
     <security:intercept-url pattern="/dashboard" access="isAuthenticated()"/><!--TODO-->
+    <security:intercept-url pattern="/assignment" access="isAuthenticated()"/>
 
     <!--By default, for securrity, all urls require login. Leave at bottom as 'fallback'-->
     <security:intercept-url pattern="/**" access="denyAll"/>
