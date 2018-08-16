@@ -3,12 +3,7 @@
 <html>
 <head>
     <title>STMS - Create Account</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap.min.css">
-    <script src="${pageContext.request.contextPath}/static/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/popper.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/bootstrap.min.js"></script>
+    <%@include file="common/headerIncludes.jsp"%>
     <style>
         .lightText {
             color: #959595;
@@ -25,35 +20,7 @@
 </head>
 <body>
 
-<%--TODO make it so I don't have to copy paste this thing everywhere (Apache Tiles!!!!!)--%>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-    <a class="navbar-brand" href="#">STMS</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">View</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Edit</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="button-group">
-                <a class="btn btn-primary" role="button" href="${pageContext.request.contextPath}/login">Login</a>
-                <a class="btn btn-secondary" role="button" href="${pageContext.request.contextPath}/createAccount">Create Account</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<%@include file="common/navbar.jsp" %>
 
 <div class="container">
     <div class="row">
