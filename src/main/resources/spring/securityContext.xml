@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:security="http://www.springframework.org/schema/security"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
@@ -32,6 +32,7 @@
     <security:intercept-url pattern="/static/**" access="permitAll"/>
 
     <security:intercept-url pattern="/login" access="permitAll"/>
+    <security:intercept-url pattern="/logout" access="permitAll"/>
     <security:intercept-url pattern="/createAccount" access="permitAll"/>
     <security:intercept-url pattern="/doCreateAccount" access="permitAll"/>
 
@@ -44,5 +45,6 @@
 
     <!--In charge of the actual login page-->
     <security:form-login login-page="/login" authentication-failure-url="/login?error=true"/>
+    <sec:logout logout-success-url="/" logout-url="/logout"/>
   </security:http>
 </beans>
