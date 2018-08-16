@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>STMS - Create Account</title>
@@ -29,6 +30,23 @@
                 <small class="lightText">STMS</small>
             </h1>
 
+            <%--Show error if applicable--%>
+            <c:if test="${passmismatch != null}">
+                <div class="alert alert-danger alert-dismissible">
+                    <strong>Passwords did not match</strong> Ensure you have typed the same password in both fields.
+                </div>
+            </c:if>
+            <c:if test="${nametaken != null}">
+                <div class="alert alert-danger alert-dismissible">
+                    <strong>Username already taken</strong> Please use the login page or enter a new username.
+                </div>
+            </c:if>
+            <c:if test="${fielderror != null}">
+                <div class="alert alert-danger alert-dismissible">
+                    <strong>Invalid username/password</strong> The password or username contain illegal characters or are too long/short.
+                </div>
+            </c:if>
+
             <div class="card card-default">
                 <div class="card-header">
                     <h3 class="panel-title">
@@ -38,7 +56,7 @@
                 </div>
                 <div class="card-body">
                     <%--sf:form works like HTML forms, but is needed for fancy Spring stuff to work. 'id' becomes 'path', moddelAttribute is method arggument name--%>
-                    <sf:form method="post" action="${pageContext.request.contextPath}/doCreateAccount" modelAttribute="user">
+                    <sf:form method="post" action="${pageContext.request.contextPath}/doCreateAccount" modelAttribute="userForm">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Username</span>

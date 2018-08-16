@@ -1,5 +1,6 @@
 package com.capstone.web.forms;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 public class UserForm
@@ -7,20 +8,22 @@ public class UserForm
     private String username;
     private String pass1;
     private String pass2;
-    private boolean enabled = false;
-    private String authority;
+    private String passEncoded;
 
     public UserForm()
     {
     }
 
-    public UserForm(String username, String pass1, String pass2, boolean enabled, String authority)
+    public UserForm(String username, String pass)
+    {
+        this(username, pass, pass);
+    }
+
+    public UserForm(String username, String pass1, String pass2)
     {
         this.username = username;
         this.pass1 = pass1;
         this.pass2 = pass2;
-        this.enabled = enabled;
-        this.authority = authority;
     }
 
     public String getUsername()
@@ -53,24 +56,24 @@ public class UserForm
         this.pass2 = pass2;
     }
 
-    public boolean isEnabled()
+    public void encodePassword(PasswordEncoder encoder)
     {
-        return enabled;
+        if(passwordsMatch())
+            passEncoded = encoder.encode(pass1);
+    }
+    public String getPassEncoded()
+    {
+        return passEncoded;
     }
 
-    public void setEnabled(boolean enabled)
+    public boolean passwordsMatch()
     {
-        this.enabled = enabled;
+        return pass1.equals(pass2);
     }
 
-    public String getAuthority()
+    public boolean fieldsValid()
     {
-        return authority;
-    }
-
-    public void setAuthority(String authority)
-    {
-        this.authority = authority;
+        return pass1.length() >= 4 && username.length() >= 3;//database will check the other bounds
     }
 
     @Override
@@ -80,8 +83,6 @@ public class UserForm
                 "username='" + username + '\'' +
                 ", pass1='" + pass1 + '\'' +
                 ", pass2='" + pass2 + '\'' +
-                ", enabled=" + enabled +
-                ", authority='" + authority + '\'' +
                 '}';
     }
 }
