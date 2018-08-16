@@ -1,0 +1,9 @@
+.field-name {
+    float:left;
+    margin-right: 1em;
+}
+
+.form-group,.form-control {
+    max-width: 80% !important;
+    width:500px !important;
+}
