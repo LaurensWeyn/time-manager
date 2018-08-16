@@ -79,9 +79,10 @@ DROP TABLE IF EXISTS `events`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 SET character_set_client = utf8mb4 ;
 CREATE TABLE `events` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(60) DEFAULT NULL,
   `courseid` int(11) DEFAULT NULL,
+  `name` varchar(60) DEFAULT NULL,
   `due` int(11) DEFAULT NULL,
   `progress` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
@@ -89,7 +90,7 @@ CREATE TABLE `events` (
   `color` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_event_user_idx` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,6 +99,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
+INSERT INTO `events` VALUES (1,'admin',1,'Capstone Handin',1534438800,95,'The Student Time Management System',1,NULL),(2,'admin',1,'Capstone Presentation',1534424400,100,'The Student Time Management System',1,NULL),(3,'admin',2,'WebAssign assignment',1534593600,40,'About numbers and stuff idk',1,NULL);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,4 +168,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-16 20:29:23
+-- Dump completed on 2018-08-16 22:14:08
