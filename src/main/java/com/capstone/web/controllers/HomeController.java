@@ -62,4 +62,16 @@ public class HomeController
         System.out.println("Mapping Assignment View");
         return "assignmentsView";
     }
+
+	@RequestMapping("/viewCourse")
+	public String showCourse(HttpSession session){
+		System.out.println("Mapping Course View");
+		return "viewCourse";
+	}
+
+	@RequestMapping("/courseDetail")
+	public String showCourseDetail(HttpSession session){
+		System.out.println("Mapping Course Detail View");
+		return "courseDetail";
+	}
 }
