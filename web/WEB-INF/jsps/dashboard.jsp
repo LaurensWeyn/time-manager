@@ -20,7 +20,8 @@
               <div class="container-fluid">
                   <%@include file="component/classSchedule.jsp"%>
               </div>
-              <div class="container-fluid">
+
+              <%--<div class="container-fluid">
                   <h4>Due</h4>
                   <div class="card">
                       <div class="card-body"><p>Physics Weekly Problem Set</p></div>
@@ -28,101 +29,11 @@
                   <div class="card">
                       <div class="card-body"><p>Capstone Progress Report</p></div>
                   </div>
-              </div>
+              </div>--%>
 
           </div>
           <div class="col-sm-8">
-              <h3>Upcoming</h3>
-              <h4>Tomorrow</h4>
-              <div class="container-fluid">
-
-                  <div class="card">
-                  <div class="card-body">
-                      <div class="progress-label">Capstone Stage 3</div>
-                      <div class="progress">
-                          <div class="progress-bar" style="width:70%">70%</div>
-                      </div>
-                      <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                      <a href="/" type="button" class="btn btn-info">Edit</a>
-                      </div>
-                      <br>
-                      <h5>Due: 10AM</h5>
-                  </div>
-              </div>
-                  <br>
-                  <div class="card">
-                      <div class="card-body">
-                          <div class="progress-label">Psychology Essay</div>
-                          <div class="progress">
-                              <div class="progress-bar" style="width:95%">95%</div>
-                          </div>
-                          <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
-                          </div>
-                          <br>
-                          <h5>Due: 11AM</h5>
-                      </div>
-                  </div>
-                  <h4>20/08</h4>
-                  <br>
-                  <div class="card">
-                      <div class="card-body">
-                          <div class="progress-label">EEE project</div>
-                          <div class="progress">
-                              <div class="progress-bar bg-warning" style="width:50%">50%</div>
-                          </div>
-                          <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
-                          </div>
-                          <br>
-                          <h5>Due: 10AM</h5>
-                      </div>
-                  </div>
-                  <br>
-                  <div class="card">
-                      <div class="card-body">
-                          <div class="progress-label">Games Dev Assignment</div>
-                          <div class="progress">
-                              <div class="progress-bar" style="width:30%">30%</div>
-                          </div>
-                          <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
-                          </div>
-                          <br>
-                          <h5>Due: 9AM</h5>
-                      </div>
-                  </div>
-                  <h4>25/08</h4>
-                  <br>
-                  <div class="card">
-                      <div class="card-body">
-                          <div class="progress-label">Math Test</div>
-                          <div class="progress">
-                              <div class="progress-bar bg-danger" style="width:0%">0%</div>
-                          </div>
-                          <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
-                          </div>
-                          <br>
-                          <h5>Due: 6PM</h5>
-                      </div>
-                  </div>
-                  <h4>05/09</h4>
-                  <br>
-                  <div class="card">
-                      <div class="card-body">
-                          <div class="progress-label">Physics Test</div>
-                          <div class="progress">
-                              <div class="progress-bar bg-danger" style="width:15%">15%</div>
-                          </div>
-                          <div class="progress-buttons"><a href="/" type="button" class="btn btn-success">Done</a>
-                          <a href="/" type="button" class="btn btn-info">Edit</a>
-                          </div>
-                          <br>
-                          <h5>Due: 2PM</h5>
-                      </div>
-                  </div>
-              </div>
+              <%@include file="component/upcomingEvents.jsp"%>
           </div>
       </div>
   </div>

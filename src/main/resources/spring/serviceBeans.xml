@@ -12,4 +12,5 @@
   <bean name="userDAO" class="com.capstone.db.dao.UserDao"/>
   <bean name="CourseDAO" class="com.capstone.db.dao.CourseDao"/>
   <bean name="TimeslotDAO" class="com.capstone.db.dao.TimeslotDao"/>
+  <bean name="EventDAO" class="com.capstone.db.dao.EventDao"/>
 </beans>

@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.capstone.db.dao.CourseDao;
+import com.capstone.db.dao.EventDao;
 import com.capstone.db.dao.TimeslotDao;
+import com.capstone.db.dto.EventGroup;
 import com.capstone.db.dto.Timeslot;
 import com.capstone.db.dto.User;
 
@@ -22,6 +24,7 @@ public class HomeController
 {
     private CourseDao courseDao;
     private TimeslotDao timeslotDao;
+    private EventDao eventDao;
 
     @Autowired
     public void setCourseDao(CourseDao courseDao)
@@ -33,6 +36,12 @@ public class HomeController
     public void setTimeslotDao(TimeslotDao timeslotDao)
     {
         this.timeslotDao = timeslotDao;
+    }
+
+    @Autowired
+    public void setEventDao(EventDao eventDao)
+    {
+        this.eventDao = eventDao;
     }
 
     @RequestMapping("/")
@@ -48,11 +57,15 @@ public class HomeController
     public String showDashboard(HttpSession session, Authentication authentication)
     {
         User user = new User(authentication);
+
         int dayOfWeek = 2;//for demo purposes, this will be a constant so it actually works on the day.
         //(Also, it is permanently Wednesday, my dudes)
         List<Timeslot> timeslots = timeslotDao.getAllTimeslotsForDayOfWeek(user, dayOfWeek);
         Collections.sort(timeslots);//should probably be done database side later
         session.setAttribute("timeslots", timeslots);
+
+        List<EventGroup> events = EventGroup.buildEventGroups(eventDao.getAllEventsForUser(user));
+        session.setAttribute("upcomingEvents", events);
 
         return "dashboard";//maps to jsps/[string].jsp
     }
