@@ -70,7 +70,7 @@ public class HomeController
         return "dashboard";//maps to jsps/[string].jsp
     }
 
-    @RequestMapping("/assignment")
+    @RequestMapping("/editEvent")
     public String showAssignment(HttpSession session){
         System.out.println("Mapping Assignment View");
         return "assignmentsView";

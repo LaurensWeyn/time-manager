@@ -38,7 +38,7 @@
 
     <!--isAuthenticated(): pages for all logged in users-->
     <security:intercept-url pattern="/dashboard" access="isAuthenticated()"/><!--TODO-->
-    <security:intercept-url pattern="/assignment" access="isAuthenticated()"/>
+    <security:intercept-url pattern="/editEvent" access="isAuthenticated()"/>
       <security:intercept-url pattern="/viewCourse" access="isAuthenticated()"/>
       <security:intercept-url pattern="/courseDetail" access="isAuthenticated()"/>
 
