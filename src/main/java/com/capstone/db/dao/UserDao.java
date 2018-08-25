@@ -18,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.capstone.db.dto.User;
 import com.capstone.web.forms.UserForm;
 
+/**
+ * In charge of managing and creating user accounts on the database, and ensuring passwords are securely stored.
+ */
 public class UserDao
 {
     private NamedParameterJdbcTemplate jdbc;
@@ -36,6 +39,11 @@ public class UserDao
         this.passwordEncoder = passwordEncoder;
     }
 
+    /**
+     * Registers a new user on the database (giving them the user role by default)
+     * @param user a form containing the details of the user to be registered
+     * @return the new User object
+     */
     @Transactional
     public User registerNewUser(UserForm user)
     {
@@ -49,6 +57,11 @@ public class UserDao
         return newUser;
     }
 
+    /**
+     * Retrieves a user and their associated authorities from the database.
+     * @param username the username to search for
+     * @return the user object, or null if the user does not exist
+     */
     public User getUserByUsername(String username)
     {
         User user = new User(username);//no DB specific things stored about users
@@ -64,6 +77,11 @@ public class UserDao
             return user;
     }
 
+    /**
+     * Adds a new role to an existing user. Should only be necessary right after user creation.
+     * @param user the user to add a role to
+     * @param newRole the name of the new role to register for this user
+     */
     public void addRole(User user, String newRole)
     {
         user.getAuthorities().add(newRole);

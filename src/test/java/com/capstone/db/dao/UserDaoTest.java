@@ -2,6 +2,7 @@ package com.capstone.db.dao;
 
 import static org.junit.Assert.*;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -39,8 +40,10 @@ public class UserDaoTest
     @Before
     public void cleanDB() throws SQLException
     {
-        datasource.getConnection().createStatement().execute("DELETE FROM authorities");
-        datasource.getConnection().createStatement().execute("DELETE FROM users");
+        Connection connection = datasource.getConnection();
+        connection.createStatement().execute("DELETE FROM authorities");
+        connection.createStatement().execute("DELETE FROM users");
+        connection.close();
     }
 
     @Test

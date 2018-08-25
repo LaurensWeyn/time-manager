@@ -37,17 +37,17 @@
     <security:intercept-url pattern="/doCreateAccount" access="permitAll"/>
 
     <!--isAuthenticated(): pages for all logged in users-->
-    <security:intercept-url pattern="/dashboard" access="isAuthenticated()"/><!--TODO-->
+    <security:intercept-url pattern="/dashboard" access="isAuthenticated()"/>
     <security:intercept-url pattern="/editEvent" access="isAuthenticated()"/>
       <security:intercept-url pattern="/viewCourse" access="isAuthenticated()"/>
       <security:intercept-url pattern="/courseDetail" access="isAuthenticated()"/>
 
-    <!--By default, for securrity, all urls require login. Leave at bottom as 'fallback'-->
+    <!--By default, for security, all urls require expliit authentication levels. Leave at bottom as 'fallback'-->
     <security:intercept-url pattern="/**" access="denyAll"/>
 
 
     <!--In charge of the actual login page-->
     <security:form-login login-page="/login" authentication-failure-url="/login?error=true"/>
-    <sec:logout logout-success-url="/" logout-url="/logout"/>
+    <sec:logout logout-success-url="/" logout-url="/logout"/><!--FIXME logout not working for some weird reason-->
   </security:http>
 </beans>

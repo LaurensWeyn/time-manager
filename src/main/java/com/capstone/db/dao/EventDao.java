@@ -2,7 +2,6 @@ package com.capstone.db.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,9 +13,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
-import com.capstone.Time;
 import com.capstone.db.dto.Event;
-import com.capstone.db.dto.Timeslot;
 import com.capstone.db.dto.User;
 
 public class EventDao
@@ -36,6 +33,11 @@ public class EventDao
         this.courseDao = courseDao;
     }
 
+    /**
+     * Retrieves a list of all events for a given user
+     * @param user the user to seach for
+     * @return all events associated with that user
+     */
     public List<Event> getAllEventsForUser(User user)
     {
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(user);
@@ -46,7 +48,7 @@ public class EventDao
             {
                 Event event = new Event();
                 event.setId(resultSet.getLong(1));
-                event.setParentCourse(courseDao.getCourseForTimeslot(resultSet.getLong(2)));
+                event.setParentCourse(courseDao.getCourseByID(resultSet.getLong(2)));
                 event.setType(resultSet.getInt(3));
                 event.setName(resultSet.getString(4));
                 event.setDescription(resultSet.getString(5));
@@ -57,5 +59,6 @@ public class EventDao
             }
         });
     }
+    //TODO more specific date range searches
 
 }

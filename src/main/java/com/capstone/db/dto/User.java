@@ -7,6 +7,9 @@ import java.util.Objects;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
+/**
+ * Represents a user on the database
+ */
 public class User
 {
     private String username;
@@ -17,6 +20,11 @@ public class User
         this.username = username;
         authorities = new ArrayList<>();
     }
+
+    /**
+     * Converts the Spring native 'authentication' state into a User object
+     * @param auth the Spring authentication state given to Spring MVC controllers
+     */
     public User(Authentication auth)
     {
         this.username = auth.getName();

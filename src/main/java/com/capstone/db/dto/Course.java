@@ -1,6 +1,7 @@
 package com.capstone.db.dto;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Course
 {
@@ -79,5 +80,24 @@ public class Course
     public void setTimeslots(List<Timeslot> timeslots)
     {
         this.timeslots = timeslots;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return id == course.id &&
+                priority == course.priority &&
+                color == course.color &&
+                Objects.equals(name, course.name) &&
+                Objects.equals(code, course.code);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(id, name, code, priority, color);
     }
 }

@@ -14,10 +14,12 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import com.capstone.Time;
-import com.capstone.db.dto.Course;
 import com.capstone.db.dto.Timeslot;
 import com.capstone.db.dto.User;
 
+/**
+ * In charge of managing Timeslot objects on the database.
+ */
 public class TimeslotDao
 {
     private NamedParameterJdbcTemplate jdbc;
@@ -35,6 +37,11 @@ public class TimeslotDao
         this.courseDao = courseDao;
     }
 
+    /**
+     * Finds a list of all timeslots for the given user.
+     * @param user the relevant user
+     * @return a list of all timeslots for all days of the week for the given user
+     */
     public List<Timeslot> getAllTimeslotsForUser(User user)
     {
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(user);
@@ -45,7 +52,7 @@ public class TimeslotDao
             {
                 Timeslot timeslot = new Timeslot();
                 timeslot.setId(resultSet.getLong(1));
-                timeslot.setParentCourse(courseDao.getCourseForTimeslot(resultSet.getLong(2)));
+                timeslot.setParentCourse(courseDao.getCourseByID(resultSet.getLong(2)));
                 timeslot.setType(resultSet.getInt(3));
                 timeslot.setDaysOfWeek(resultSet.getString(4));
                 timeslot.setStartTime(new Time(resultSet.getInt(5)));
@@ -55,7 +62,13 @@ public class TimeslotDao
             }
         });
     }
-    
+
+    /**
+     * Gets all timeslots on a specific day of the week for a certain user
+     * @param user the user to search for
+     * @param dayOfWeek the day of the week (0 for monday to 6 for sunday)
+     * @return a list of the relevant Timeslots
+     */
     public List<Timeslot> getAllTimeslotsForDayOfWeek(User user, int dayOfWeek)
     {
         if(dayOfWeek >= 7 || dayOfWeek < 0)
