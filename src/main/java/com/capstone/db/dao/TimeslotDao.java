@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
-import com.capstone.Time;
+import com.capstone.util.Time;
 import com.capstone.db.dto.Timeslot;
 import com.capstone.db.dto.User;
 

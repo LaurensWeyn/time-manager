@@ -1,4 +1,4 @@
-package com.capstone;
+package com.capstone.util;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

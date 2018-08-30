@@ -1,8 +1,6 @@
 package com.capstone.db.dto;
 
-import com.capstone.Time;
-
-import javafx.util.converter.TimeStringConverter;
+import com.capstone.util.Time;
 
 public class Timeslot implements Comparable<Timeslot>
 {

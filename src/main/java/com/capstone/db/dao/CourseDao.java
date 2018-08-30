@@ -95,4 +95,14 @@ public class CourseDao
         jdbc.update("UPDATE courses SET name = :name, code = :courseCode, color = :color, priority = :priority WHERE id = :metaId", paramSource);
     }
 
+    /**
+     * Deletes a course by ID from the database if it exists.
+     * @param courseID the id of the course to delete
+     */
+    public void deleteCourse(long courseID)
+    {
+        //TODO This method still needs to be considered in tests
+        jdbc.update("DELETE FROM courses WHERE id = :id", new MapSqlParameterSource("id", courseID));
+    }
+
 }
