@@ -20,6 +20,10 @@
               <div class="container-fluid">
                   <%@include file="component/classSchedule.jsp"%>
               </div>
+              <h4>To-do</h4>
+              <div class="container-fluid">
+                  <%@include file="todoList.jsp"%>
+              </div>
 
               <%--<div class="container-fluid">
                   <h4>Due</h4>

@@ -73,13 +73,13 @@ public class HomeController
     @RequestMapping("/editEvent")
     public String showAssignment(HttpSession session){
         System.out.println("Mapping Assignment View");
-        return "assignmentsView";
+        return "assignmentEditAdvanced";
     }
 
 	@RequestMapping("/viewCourse")
 	public String showCourse(HttpSession session){
 		System.out.println("Mapping Course View");
-		return "viewCourse";
+		return "courseDetail";
 	}
 
 	@RequestMapping("/courseDetail")
