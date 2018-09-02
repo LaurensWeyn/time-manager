@@ -6,12 +6,12 @@
 
 <head>
     <title>Student Time Management System</title>
-    <%@include file="common/headerIncludes.jsp"%>
+    <%@include file="../common/headerIncludes.jsp"%>
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
 </head>
 
 <body>
-<%@include file="common/navbar.jsp" %>
+<%@include file="../common/navbar.jsp" %>
 <br>
 <div class="container-fluid">
     <div class="row">
@@ -27,12 +27,17 @@
                 </div>
                 <div class="card-body">
                     <form>
-                        Lecture or Tutorial:
-                        <select name="Type" class="custom-select custom-select-sm">
-                            <option selected>Select Type</option>
-                            <option value="lecture">Lecture</option>
-                            <option value="tutorial">Tutorial</option>
-                        </select>
+                        Lecture or Tutorial:<br> <!--TODO: add JS to fetch the answer from here-->
+                        <div class="custom-control custom-radio" style="white-space:nowrap;display:inline;">
+                            <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
+                            <label class="custom-control-label" for="customRadio">Lecture</label>
+
+                        </div>
+                        <div class="custom-control custom-radio" style="white-space:nowrap;display:inline;">
+                            <input type="radio" class="custom-control-input" id="customRadio1" name="example1" value="customEx1">
+                            <label class="custom-control-label" for="customRadio1">Tutorial</label>
+
+                        </div>
                     </form>
                 </div>
                 <div class="card-body">

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <title>Student Time Management System</title>
-    <%@include file="common/headerIncludes.jsp"%>
+    <%@include file="../common/headerIncludes.jsp"%>
 
     <style>
         .fakeimg {
@@ -27,7 +27,7 @@
 <body>
 
 
-<%@include file="common/navbar.jsp" %>
+<%@include file="../common/navbar.jsp" %>
 
 <div class="container">
 

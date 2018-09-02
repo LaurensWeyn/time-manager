@@ -50,7 +50,7 @@ public class HomeController
         session.setAttribute("Key", "Value");//example of loading data into a session
         System.out.println("Mapping homepage");
 
-        return "home";//maps to jsps/[string].jsp
+        return "static/home";//maps to jsps/[string].jsp
     }
 
     @RequestMapping("/dashboard")
@@ -73,18 +73,18 @@ public class HomeController
     @RequestMapping("/editEvent")
     public String showAssignment(HttpSession session){
         System.out.println("Mapping Assignment View");
-        return "assignmentEditAdvanced";
+        return "Placeholders/assignmentsView";
     }
 
 	@RequestMapping("/viewCourse")
 	public String showCourse(HttpSession session){
 		System.out.println("Mapping Course View");
-		return "courseDetail";
+		return "Placeholders/courseDetail";
 	}
 
 	@RequestMapping("/courseDetail")
 	public String showCourseDetail(HttpSession session){
 		System.out.println("Mapping Course Detail View");
-		return "courseDetail";
+		return "Placeholders/courseDetail";
 	}
 }

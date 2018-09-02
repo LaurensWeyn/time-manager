@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <title>STMS - Login</title>
-    <%@include file="common/headerIncludes.jsp"%>
+    <%@include file="../common/headerIncludes.jsp"%>
     <style>
         .lightText {
             color: #959595;
@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<%@include file="common/navbar.jsp" %>
+<%@include file="../common/navbar.jsp" %>
 
 <div class="container">
 

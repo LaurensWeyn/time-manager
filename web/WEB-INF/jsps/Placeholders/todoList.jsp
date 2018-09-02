@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Student Time Management System</title>
-    <%@include file="common/headerIncludes.jsp"%>
+    <%@include file="../common/headerIncludes.jsp"%>
     <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
 </head>
 

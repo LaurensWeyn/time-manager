@@ -26,14 +26,14 @@ public class LoginController
     @RequestMapping("/login")
     public String showLogin()
     {
-        return "login";
+        return "static/login";
     }
 
     @RequestMapping("/createAccount")
     public String showCreateAccountPage(Model model)
     {
         model.addAttribute("userForm", new UserForm());//by default, navigate here with a blank User. (fields stay filled in on failure)
-        return "createAccount";
+        return "static/createAccount";
     }
 
     @RequestMapping("/doCreateAccount")
@@ -45,19 +45,19 @@ public class LoginController
         if(!userForm.passwordsMatch())
         {
             session.setAttribute("passmismatch", true);
-            return "createAccount";
+            return "static/createAccount";
         }
 
         if(!userForm.fieldsValid())
         {
             session.setAttribute("fielderror", true);
-            return "createAccount";
+            return "static/createAccount";
         }
 
         if(userDao.getUserByUsername(userForm.getUsername()) != null)
         {
             session.setAttribute("nametaken", true);
-            return "createAccount";
+            return "static/createAccount";
         }
 
         try
@@ -67,10 +67,10 @@ public class LoginController
         catch(Exception err)
         {
             session.setAttribute("fielderror", true);
-            return "createAccount";
+            return "static/createAccount";
         }
 
-        return "home";//TODO create account success page
+        return "static/home";//TODO create account success page
     }
 
     public static void main(String[] args)

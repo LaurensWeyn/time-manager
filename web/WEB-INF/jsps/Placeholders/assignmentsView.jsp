@@ -6,12 +6,13 @@
 
 <head>
     <title>Student Time Management System</title>
-    <%@include file="common/headerIncludes.jsp"%>
+    <%@include file="../common/headerIncludes.jsp"%>
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
+    <script src="static/assignmentForm.js"></script>
 </head>
 
 <body>
-    <%@include file="common/navbar.jsp" %>
+    <%@include file="../common/navbar.jsp" %>
     <br>
     <div class="container-fluid">
         <div class="row">
@@ -42,9 +43,10 @@
                             <textarea class="form-control" rows="5" id="comment" style="margin-left: 22px;margin-right:22px;">Capstone stage 3 requires a prototype for demonstration.</textarea>
                         </div>
                         <form>
-                            <label for="customRange" style="margin-left: 22px;">Assignment Progress</label>
+                            <label for="assignmentProgress" style="margin-left: 22px;">Assignment Progress</label>
                             <br>
-                            <input type="range" class="custom-range" id="customRange" name="progress" style="max-width: 80%;margin-left: 10%;">
+                            <input type="range" class="custom-range" id="assignmentProgress" name="progress" min=0 max=100 onchange="updateProgress(this.value);" style="max-width: 80%;margin-left: 10%;">
+                            <input type ="text" class="form-control-plaintext" id="assignmentProgressText" style="margin-left:49.5%">
                         </form>
                     </div>
                 <!--</div>-->
