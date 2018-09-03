@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
     <script src="static/assignmentForm.js"></script>
 </head>
-
+<!-- TODO: maybe move these edit views to BOOSTRAP MODALS for fancier UI-->
 <body>
     <%@include file="../common/navbar.jsp" %>
     <br>
@@ -18,36 +18,38 @@
         <div class="row">
             <div class="col-sm-12">
                 <h4 style="text-align: center;">Edit Assignment: Capstone Stage 3</h4>
-               <!-- <div class="card">-->
-                    <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
-                        <div class="card-body">
-                            <div class="field-name">Assignment Name</div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="assignmentName" name="Assignment Name" placeholder="Capstone Stage 3" >
-                            </div>
+                <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
+                    <div class="card-body">
+                        <div class="field-name">Assignment Name</div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="assignmentName" name="Assignment Name" placeholder="Capstone Stage 3" >
                         </div>
-                        <div class="card-body">
-                            <div class="field-name">Assignment Due Date</div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="assignmentDue" name="Assignment Name" placeholder="08/18" >
-                            </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="field-name">Assignment Due Date</div>
+                        <div class="form-group"> <!--TODO: make popup calendar -->
+                            <input type="text" class="form-control" id="assignmentDue" name="Assignment Name" placeholder="08/18" >
                         </div>
-                        <div class="card-body">
-                            <div class="field-name">Assignment Course</div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="assignmentCourse" name="Assignment Name" placeholder="CSC3003S" >
-                            </div>
+                    </div>
+                    <div class="card-body" style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
+                        <label for="course">Assignment Course</label>
+                        <div class="form-group" style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
+                            <select class="form-control" id="course">
+                                <option selected>CSC3003S</option> <!-- TODO: OOF this needs to be done d ynamically -->
+                                <option>MAM2000W</option>
+                            </select>
                         </div>
-                        <div class="form-group" style="width:1376px">
-                            <label for="comment" style="margin-left: 22px;">Description:</label>
-                            <textarea class="form-control" rows="5" id="comment" style="margin-left: 22px;margin-right:22px;">Capstone stage 3 requires a prototype for demonstration.</textarea>
-                        </div>
-                        <form>
-                            <label for="assignmentProgress" style="margin-left: 22px;">Assignment Progress</label>
-                            <br>
-                            <input type="range" class="custom-range" id="assignmentProgress" name="progress" min=0 max=100 onchange="updateProgress(this.value);" style="max-width: 80%;margin-left: 10%;">
-                            <input type ="text" class="form-control-plaintext" id="assignmentProgressText" style="margin-left:49.5%">
-                        </form>
+                    </div>
+                    <label for="comment" style="margin-left: 1.6%;">Description:</label>
+                    <div class="form-group" style="max-width:97% ;">
+                        <textarea class="form-control" rows="5" id="comment" style="margin-left: 1.5%;margin-right:1.5%;">Capstone stage 3 requires a prototype for demonstration.</textarea>
+                    </div>
+                    <form>
+                        <label for="customRange" style="margin-left: 22px;">Assignment Progress</label>
+                        <br>
+                        <input type="range" class="custom-range" id="customRange" value=50 min=0 max=100 onchange="updateProgress(this.value)" name="progress" style="max-width: 80%;margin-left: 10%;"><!-- TODO: value=50 is placeholder -->
+                        <input type ="text" class="form-control-plaintext" id="assignmentProgressText" style="margin-left:49.5%">
+                    </form>
                     </div>
                 <!--</div>-->
             </div>

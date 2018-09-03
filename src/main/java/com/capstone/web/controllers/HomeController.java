@@ -73,7 +73,7 @@ public class HomeController
     @RequestMapping("/editEvent")
     public String showAssignment(HttpSession session){
         System.out.println("Mapping Assignment View");
-        return "Placeholders/assignmentsView";
+        return "Placeholders/assignmentEditAdvanced";
     }
 
 	@RequestMapping("/viewCourse")
@@ -87,4 +87,10 @@ public class HomeController
 		System.out.println("Mapping Course Detail View");
 		return "Placeholders/courseDetail";
 	}
+
+	@RequestMapping("/completeEvent")
+    public String completeEvent(HttpSession session){
+        System.out.println("Event completed");
+        return "dashboard";
+    }
 }

@@ -12,6 +12,6 @@ function setCurrentProgress(){
     document.getElementById('assignmentProgressText').value=progress;
 }
 // Set the current progress to the text display
-updateProgress(50); //Placeholder 50, need to dynamically update progress from DB
+updateProgress(document.getElementById('customRange').valueOf()); //Placeholder 50, need to dynamically update progress from DB
 // setCurrentProgress();
 //TODO: get last progress, then set the current progress
