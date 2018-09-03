@@ -3,6 +3,7 @@ package com.capstone.db.dto;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class Event implements Comparable<Event>
 {
@@ -106,5 +107,41 @@ public class Event implements Comparable<Event>
     public int compareTo(Event other)
     {
         return due.compareTo(other.due);
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return type == event.type &&
+                progress == event.progress &&
+                color == event.color &&
+                Objects.equals(parentCourse, event.parentCourse) &&
+                Objects.equals(name, event.name) &&
+                Objects.equals(description, event.description) &&
+                Objects.equals(due, event.due);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(parentCourse, name, description, due, type, progress, color);
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Event{" +
+                "id=" + id +
+                ", parentCourse=" + parentCourse +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", due=" + due +
+                ", type=" + type +
+                ", progress=" + progress +
+                ", color=" + color +
+                '}';
     }
 }

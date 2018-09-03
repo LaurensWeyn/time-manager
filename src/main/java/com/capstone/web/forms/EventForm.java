@@ -1,5 +1,9 @@
 package com.capstone.web.forms;
 
+import com.capstone.db.dto.Course;
+import com.capstone.db.dto.Event;
+import com.capstone.db.dto.User;
+
 public class EventForm
 {
     private String name;
@@ -13,6 +17,37 @@ public class EventForm
     private long metaCourseId;
     private long metaId;
     private String metaUsername;
+
+    public EventForm()
+    {
+
+    }
+
+    public EventForm(String name, int due, String username, long courseId)
+    {
+        this.name = name;
+        this.due = due;
+        this.metaUsername = username;
+        this.metaCourseId = courseId;
+    }
+
+    public EventForm(Event event)
+    {
+        metaId = event.getId();
+
+        name = event.getName();
+        due = (int)(event.getDue().getTime() / 1_000);
+        progress = event.getProgress();
+        description = event.getDescription();
+        type = event.getType();
+        color = event.getColor();
+    }
+    public EventForm(Event event, User user, Course course)
+    {
+        this(event);
+        metaUsername = user.getUsername();
+        metaCourseId = course.getId();
+    }
 
     public String getName()
     {

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.capstone.db.dto.Course;
 import com.capstone.util.CombinedSqlParameterSource;
 import com.capstone.web.forms.EventForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,17 @@ public class EventDao
                 "ORDER BY due", paramSource, eventRowMapper);
     }
 
+    public Event getEventByID(long id)
+    {
+        SqlParameterSource paramSource = new MapSqlParameterSource("id", id);
+        List<Event> result = jdbc.query("SELECT id, courseid, type, name, description, due, progress, color FROM events " +
+                "WHERE id = :id ", paramSource, eventRowMapper);
+        if(result.size() == 1)
+            return result.get(0);
+        else
+            return null;
+    }
+
     /**
      * Retrieves a list of all events within the given date range for a given user
      * @param user the user to search for
@@ -79,8 +91,8 @@ public class EventDao
     public List<Event> getEventsInRangeForUser(User user, Date startDate, Date endDate)
     {
         CombinedSqlParameterSource paramSource = new CombinedSqlParameterSource(user);
-        paramSource.addValue("startDate", startDate.getTime() * 1000L);
-        paramSource.addValue("endDate", endDate.getTime() * 1000L);
+        paramSource.addValue("startDate", startDate.getTime() / 1000L);
+        paramSource.addValue("endDate", endDate.getTime() / 1000L);
         return jdbc.query("SELECT id, courseid, type, name, description, due, progress, color FROM events " +
                 "WHERE username = :username AND due >= :startDate AND due <= :endDate" +
                 " ORDER BY due", paramSource, eventRowMapper);
@@ -104,7 +116,7 @@ public class EventDao
     public void editEvent(EventForm eventForm)
     {
         SqlParameterSource  paramSource = new BeanPropertySqlParameterSource(eventForm);
-        jdbc.update("UPDATE events SET name = :name, due = :due, progress = :progress, description = :descroption, type = :type, color = :color WHERE id = :metaId", paramSource);
+        jdbc.update("UPDATE events SET name = :name, due = :due, progress = :progress, description = :description, type = :type, color = :color WHERE id = :metaId", paramSource);
     }
 
     /**
