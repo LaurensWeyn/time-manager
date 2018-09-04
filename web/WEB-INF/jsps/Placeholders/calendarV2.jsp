@@ -20,12 +20,17 @@
     <script src='/static/jquery.min.js'></script>
     <script src='/static/moment.min.js'></script>
     <script src='/static/fullcalendar.js'></script>
+    <script type='text/javascript' src='static/gcal.js'></script>
     <script>
         $(function() {
 
             // page is now ready, initialize the calendar...
             $('#calendar').fullCalendar({
                 // put your options and callbacks here
+                googleCalendarApiKey: 'AIzaSyDr6PBEBQSv5yRO9NI71DHSlqcw1dmP02g',
+                events: {
+                    googleCalendarId: 'badenhorst.alec@gmail.com' // Syncing works, although the user would need to make their calendar public and put their calendar id in here.
+                },
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -49,7 +54,7 @@
     <div id="header">
     </div>
     <div class="card" style="">
-        <div id='calendar' style="max-width: 60%;"></div>
+        <div id='calendar' style="max-height:60%"></div>
     </div>
 </body>
 </html>

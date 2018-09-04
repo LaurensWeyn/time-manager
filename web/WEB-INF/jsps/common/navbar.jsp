@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/bootstrap.min.js">
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
     <a class="navbar-brand" href="${pageContext.request.contextPath}/">STMS</a>
