@@ -83,4 +83,8 @@ public class EventGroup implements Comparable<EventGroup>
     {
         return dfCompare.format(this.date).compareTo(dfCompare.format(that.date));
     }
+
+    public boolean isEmpty(){
+        return events.isEmpty();
+    }
 }

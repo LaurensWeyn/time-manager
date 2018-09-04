@@ -1,6 +1,10 @@
-function onEventComplete(id) {
+function onEventComplete(id, events) {
     var element = document.getElementById(id);
-    element.parentNode.removeChild(element);
+    element.parentNode.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode.parentNode);
+    // If events is empty, remove the date header
+    if (events.valueOf() == true){
+        element.parentNode.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode.parentNode);
+    }
     return false;
 }
 

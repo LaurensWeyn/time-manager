@@ -93,4 +93,10 @@ public class HomeController
         System.out.println("Event completed");
         return "dashboard";
     }
+
+    @RequestMapping("calendar")
+    public String showCalendar(HttpSession session){
+        System.out.println("Mapping Calendar");
+        return "Placeholders/calendarV2";
+    }
 }

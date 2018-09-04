@@ -42,6 +42,7 @@
     <security:intercept-url pattern="/viewCourse" access="isAuthenticated()"/>
     <security:intercept-url pattern="/courseDetail" access="isAuthenticated()"/>
     <security:intercept-url pattern="/completeEvent" access="isAuthenticated()"/>
+    <security:intercept-url pattern="/calendar" access="isAuthenticated()"/>
 
     <!--By default, for security, all urls require expliit authentication levels. Leave at bottom as 'fallback'-->
     <security:intercept-url pattern="/**" access="denyAll"/>

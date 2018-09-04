@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css">
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
     <a class="navbar-brand" href="${pageContext.request.contextPath}/">STMS</a>
@@ -15,7 +16,7 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">View</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/calendar">View</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Edit</a>

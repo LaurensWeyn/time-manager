@@ -16,7 +16,7 @@
                     <div class="progress">
                         <div class="progress-bar" style="width:${event.progress}%">${event.progress}%</div>
                     </div>
-                    <div class="progress-buttons button-bar"><a href="${pageContext.request.contextPath}/completeEvent?id=${event.id}" id=${event.id} onclick="onEventComplete(this.id)" type="button" class="btn btn-success">Done</a>
+                    <div class="progress-buttons button-bar"><a href="${pageContext.request.contextPath}/completeEvent?id=${event.id}" id="${event.id}" onclick="onEventComplete(this.id, ${eventGroup.events})" type="button" class="btn btn-success">Done</a>
                         <a href="${pageContext.request.contextPath}/editEvent?id=${event.id}" type="button" class="btn btn-info">Edit</a>
                     </div>
                     <br>
