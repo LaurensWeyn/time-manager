@@ -79,7 +79,7 @@ public class HomeController
 	@RequestMapping("/viewCourse")
 	public String showCourse(HttpSession session){
 		System.out.println("Mapping Course View");
-		return "Placeholders/courseDetail";
+		return "Placeholders/viewCourse";
 	}
 
 	@RequestMapping("/courseDetail")

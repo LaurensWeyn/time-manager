@@ -12,10 +12,6 @@
 <head id="header-head">
     <title>Student Time Management System</title>
 
-    <div>
-        <%@include file="../common/headerIncludes.jsp"%>
-    </div>
-
     <link rel='stylesheet' href='/static/css/prepped/fullcalendar.css' />
     <script src='/static/js/prepped/jquery.min.js'></script>
     <script src='/static/js/prepped/moment.min.js'></script>
@@ -46,6 +42,7 @@
 
 </head>
 <body id="header-body">
+<%@include file="../common/navbar.jsp" %>
     <%--<script>--%>
         <%--$(document).ready(function() {--%>
         <%--var html =  '/common/navbar';--%>
