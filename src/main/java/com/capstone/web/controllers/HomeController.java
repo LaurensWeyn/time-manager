@@ -4,10 +4,13 @@ import java.security.Principal;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,7 @@ import com.capstone.db.dao.TimeslotDao;
 import com.capstone.db.dto.EventGroup;
 import com.capstone.db.dto.Timeslot;
 import com.capstone.db.dto.User;
+import org.springframework.web.jsf.FacesContextUtils;
 
 @Controller
 public class HomeController
@@ -76,12 +80,6 @@ public class HomeController
         return "Placeholders/assignmentEditAdvanced";
     }
 
-	@RequestMapping("/completeEvent")
-    public String completeEvent(HttpSession session){
-        System.out.println("Event completed");
-        return "dashboard";
-    }
-
     @RequestMapping("calendar")
     public String showCalendar(HttpSession session){
         System.out.println("Mapping Calendar");
@@ -93,4 +91,13 @@ public class HomeController
         System.out.println("Mapping all courses");
         return "allCourses";
     }
+
+//    @RequestMapping("/logout")
+//    public String logout(HttpSession session){
+//        // TODO: fix the logout button disappearing. This happens because the security context has been cleared. Need to refresh with notValidated
+//        SecurityContextHolder.clearContext();
+//        session.removeAttribute("User");
+//        session.invalidate();
+//        return "static/home";
+//    }
 }

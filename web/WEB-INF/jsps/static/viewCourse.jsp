@@ -34,7 +34,7 @@
                 </div>
                 <div class="card-body">
                     <div class="field-name">Lecturer</div>
-                    <div class="form-group">
+                    <div class="form-group"> <!-- TODO: not a useful field as it stands-->
                         <input type="text" class="form-control" id="courseLecturer" name="Assignment Name" placeholder="Matt. E. Matics" >
                     </div>
                 </div>
@@ -47,14 +47,7 @@
                     </div>
                     <br>
                     <div class="card"style="display:inline;">
-                        <div class="card-body"style="display:inline;"><span class="badge badge-pill badge-danger">Mo</span>
-                        </div>
-                        <div class="card-body"style="display:inline;">Lecture
-                        </div>
-                        <div class="card-body"style="display:inline;">8 A.M
-                        </div>
-                        <div type="button" class="btn btn-info">Edit</div>
-                        <div type="button" class="btn btn-danger">Remove</div>
+                        <%@include file="../component/timeSlotDays.jsp" %>
                     </div>
                     <br>
                     <a href="/addTimeslot" type="button" class="btn btn-info">Add</a>
