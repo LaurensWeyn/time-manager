@@ -5,7 +5,7 @@
 
 <head>
     <%--<%@include file="common/headerIncludes.jsp"%>--%>
-    <link rel="stylesheet" type="text/css" href="/static/calendar.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/calendar.css">
 </head>
 <body>
 <div class="navbar navbar-fixed-top navbar-default">

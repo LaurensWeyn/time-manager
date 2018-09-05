@@ -16,10 +16,10 @@
         <%@include file="../common/headerIncludes.jsp"%>
     </div>
 
-    <link rel='stylesheet' href='/static/fullcalendar.css' />
-    <script src='/static/jquery.min.js'></script>
-    <script src='/static/moment.min.js'></script>
-    <script src='/static/fullcalendar.js'></script>
+    <link rel='stylesheet' href='/static/css/prepped/fullcalendar.css' />
+    <script src='/static/js/prepped/jquery.min.js'></script>
+    <script src='/static/js/prepped/moment.min.js'></script>
+    <script src='/static/js/prepped/fullcalendar.js'></script>
     <script type='text/javascript' src='static/gcal.js'></script>
     <script>
         $(function() {
@@ -54,7 +54,7 @@
     <div id="header">
     </div>
     <div class="card" style="">
-        <div id='calendar' style="max-height:60%"></div>
+        <div id='calendar' style="max-width:60%"></div>
     </div>
 </body>
 </html>

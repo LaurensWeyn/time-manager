@@ -10,7 +10,7 @@
 <head>
     <title>Student Time Management System</title>
     <%@include file="../common/headerIncludes.jsp"%>
-    <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
 </head>
 
 <body>
