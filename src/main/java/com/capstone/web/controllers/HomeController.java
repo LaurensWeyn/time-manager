@@ -76,12 +76,6 @@ public class HomeController
         return "Placeholders/assignmentEditAdvanced";
     }
 
-	@RequestMapping("/viewCourse")
-	public String showCourse(HttpSession session){
-		System.out.println("Mapping Course View");
-		return "static/viewCourse";
-	}
-
 	@RequestMapping("/completeEvent")
     public String completeEvent(HttpSession session){
         System.out.println("Event completed");
