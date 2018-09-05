@@ -1,13 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
     <a class="navbar-brand" href="${pageContext.request.contextPath}/">STMS</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/">About</a>
             </li>
@@ -15,10 +18,29 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/calendar">View</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/calendar">Calendar</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Edit</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="viewMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    View
+                </a>
+                <div class="dropdown-menu" aria-labelledby="viewMenu">
+                    <a class="dropdown-item" href="/viewAllCourses">Courses</a>
+                    <a class="dropdown-item" href="#">To-Do</a>
+                    <a class="dropdown-item" href="#">Class</a>
+                    <a class="dropdown-item" href="#">Event</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/" id="addMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add
+                </a>
+                <div class="dropdown-menu" aria-labelledby="addMenu">
+                    <a class="dropdown-item" href="#">Course</a>
+                    <a class="dropdown-item" href="#">To-Do</a>
+                    <a class="dropdown-item" href="#">Class</a>
+                    <a class="dropdown-item" href="#">Event</a>
+                </div>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

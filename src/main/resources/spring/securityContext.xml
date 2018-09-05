@@ -37,12 +37,23 @@
     <security:intercept-url pattern="/doCreateAccount" access="permitAll"/>
 
     <!--isAuthenticated(): pages for all logged in users-->
-    <security:intercept-url pattern="/dashboard" access="isAuthenticated()"/>
-    <security:intercept-url pattern="/editEvent" access="isAuthenticated()"/>
-    <security:intercept-url pattern="/viewCourse" access="isAuthenticated()"/>
-    <security:intercept-url pattern="/courseDetail" access="isAuthenticated()"/>
-    <security:intercept-url pattern="/completeEvent" access="isAuthenticated()"/>
-    <security:intercept-url pattern="/calendar" access="isAuthenticated()"/>
+      <security:intercept-url pattern="/dashboard" access="isAuthenticated()"/>
+
+
+
+      <security:intercept-url pattern="/calendar" access="isAuthenticated()"/>
+
+      <!-- Stuff for events -->
+      <security:intercept-url pattern="/completeEvent" access="isAuthenticated()"/>
+      <security:intercept-url pattern="/editEvent" access="isAuthenticated()"/>
+      <!-- Stuff for courses -->
+      <security:intercept-url pattern="/viewCourse" access="isAuthenticated()"/> <!-- Full course overview-->
+      <security:intercept-url pattern="/addCourse" access="isAuthenticated()"/> <!-- Add course page-->
+      <security:intercept-url pattern="/doAddCourse" access="isAuthenticated()"/> <!-- Actually add the course-->
+      <security:intercept-url pattern="/viewAllCourses" access="isAuthenticated()"/> <!-- view all courses of user-->
+      <!-- Timeslots-->
+      <security:intercept-url pattern="/addTimeslot" access="isAuthenticated()"/>
+      <security:intercept-url pattern="/doAddTimeslot" access="isAuthenticated()"/>
 
     <!--By default, for security, all urls require expliit authentication levels. Leave at bottom as 'fallback'-->
     <security:intercept-url pattern="/**" access="denyAll"/>

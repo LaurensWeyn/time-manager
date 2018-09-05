@@ -79,13 +79,7 @@ public class HomeController
 	@RequestMapping("/viewCourse")
 	public String showCourse(HttpSession session){
 		System.out.println("Mapping Course View");
-		return "Placeholders/viewCourse";
-	}
-
-	@RequestMapping("/courseDetail")
-	public String showCourseDetail(HttpSession session){
-		System.out.println("Mapping Course Detail View");
-		return "Placeholders/courseDetail";
+		return "static/viewCourse";
 	}
 
 	@RequestMapping("/completeEvent")
@@ -97,6 +91,12 @@ public class HomeController
     @RequestMapping("calendar")
     public String showCalendar(HttpSession session){
         System.out.println("Mapping Calendar");
-        return "Placeholders/calendarV2";
+        return "calendar";
+    }
+
+    @RequestMapping("/viewAllCourses")
+    public String showAllCourses(HttpSession session){
+        System.out.println("Mapping all courses");
+        return "allCourses";
     }
 }

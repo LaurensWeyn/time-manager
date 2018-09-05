@@ -15,6 +15,7 @@
   <br>
   <div class="container-fluid">
       <div class="row">
+
           <div class="col-sm-4">
               <h3>Today</h3>
               <div class="container-fluid">
@@ -25,20 +26,11 @@
                   <%@include file="Placeholders/todoList.jsp"%>
               </div>
 
-              <%--<div class="container-fluid">
-                  <h4>Due</h4>
-                  <div class="card">
-                      <div class="card-body"><p>Physics Weekly Problem Set</p></div>
-                  </div>
-                  <div class="card">
-                      <div class="card-body"><p>Capstone Progress Report</p></div>
-                  </div>
-              </div>--%>
-
           </div>
           <div class="col-sm-8">
               <%@include file="component/upcomingEvents.jsp"%>
           </div>
+
       </div>
   </div>
 </body>

@@ -9,9 +9,9 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
-<head id="header-head">
+<head>
     <title>Student Time Management System</title>
-
+    <%@include file="common/headerIncludes.jsp"%>
     <link rel='stylesheet' href='/static/css/prepped/fullcalendar.css' />
     <script src='/static/js/prepped/jquery.min.js'></script>
     <script src='/static/js/prepped/moment.min.js'></script>
@@ -41,17 +41,16 @@
     </script>
 
 </head>
-<body id="header-body">
-<%@include file="../common/navbar.jsp" %>
-    <%--<script>--%>
-        <%--$(document).ready(function() {--%>
-        <%--var html =  '/common/navbar';--%>
-        <%--$('#header').load(html);--%>
-    <%--});</script>--%>
-    <div id="header">
+<body>
+<%@include file="common/navbar.jsp" %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card" style="">
+                <div id='calendar' style="max-width:60%; margin-left:20%;"></div>
+            </div>
+        </div>
     </div>
-    <div class="card" style="">
-        <div id='calendar' style="max-width:60%"></div>
-    </div>
+</div>
 </body>
 </html>
