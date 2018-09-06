@@ -99,7 +99,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'admin',1,'Capstone Handin',1534438800,95,'The Student Time Management System',1,NULL),(2,'admin',1,'Capstone Presentation',1534424400,100,'The Student Time Management System',1,NULL),(3,'admin',2,'WebAssign assignment',1534593600,40,'About numbers and stuff idk',1,NULL);
+INSERT INTO `events` VALUES (1,'admin',1,'Capstone Handin',1534438800,95,'The Student Time Management System',1,NULL),(2,'admin',1,'Capstone Presentation',1534424400,100,'The Student Time Management System',1,NULL),(3,'admin',2,'WebAssign assignment',1534593600,40,'About numbers and stuff idk',1,NULL),(4,'admin',2,'Weekly Tutorial',1534438800,10,'Usual weekly tutorial',2,null);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 

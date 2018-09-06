@@ -62,7 +62,7 @@
                 <div class="form-group"style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
                     <label for="importance">Importance:</label>
                     <select class="form-control" id="importance">
-                        <%@include file="component/importance.jsp"%>
+                        <%@include file="static/importance.jsp"%>
                     </select>
                 </div>
             </div>

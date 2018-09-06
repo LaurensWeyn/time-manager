@@ -13,12 +13,12 @@
 
 <head>
     <title>Student Time Management System</title>
-    <%@include file="../common/headerIncludes.jsp" %>
+    <%@include file="common/headerIncludes.jsp" %>
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
 </head>
 
 <body>
-<%@include file="../common/navbar.jsp" %>
+<%@include file="common/navbar.jsp" %>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">

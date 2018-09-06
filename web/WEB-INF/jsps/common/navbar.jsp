@@ -27,8 +27,7 @@
                 <div class="dropdown-menu" aria-labelledby="viewMenu">
                     <a class="dropdown-item" href="/viewAllCourses">Courses</a>
                     <a class="dropdown-item" href="#">To-Do</a>
-                    <a class="dropdown-item" href="#">Class</a>
-                    <a class="dropdown-item" href="#">Event</a>
+                    <a class="dropdown-item" href="#">Events</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -36,9 +35,9 @@
                     Add
                 </a>
                 <div class="dropdown-menu" aria-labelledby="addMenu">
-                    <a class="dropdown-item" href="#">Course</a>
+                    <a class="dropdown-item" href="/addCourse">Course</a>
                     <a class="dropdown-item" href="#">To-Do</a>
-                    <a class="dropdown-item" href="#">Class</a>
+                    <a class="dropdown-item" href="/addTimeslot">Time-slot</a>
                     <a class="dropdown-item" href="#">Event</a>
                 </div>
             </li>

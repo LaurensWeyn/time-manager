@@ -6,12 +6,12 @@
 
 <head>
     <title>Student Time Management System</title>
-    <%@include file="../common/headerIncludes.jsp" %>
+    <%@include file="common/headerIncludes.jsp" %>
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
 </head>
 
 <body>
-<%@include file="../common/navbar.jsp" %>
+<%@include file="common/navbar.jsp" %>
 <br>
 <div class="container-fluid">
     <div class="row">
@@ -50,7 +50,7 @@
                         </div>
                         <br>
                         <div class="card" style="display:inline;">
-                            <%@include file="../component/timeSlotDays.jsp" %>
+                            <%@include file="component/timeSlotDays.jsp" %>
                         </div>
                         <br>
                         <form>

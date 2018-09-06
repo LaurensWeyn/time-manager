@@ -38,7 +38,7 @@ public class CourseController {
 		blankForm.setMetaId(courseMetaID++);
 		model.addAttribute("courses", courseDao.getCoursesForUser((User) session.getAttribute("User")));
 		model.addAttribute("courseForm", blankForm);
-		return "static/newCourseForm";
+		return "newCourseForm";
 	}
 
 	@RequestMapping("/doAddCourse")
@@ -47,7 +47,7 @@ public class CourseController {
 
 		if (courseForm.getCourseCode().equals("")) {
 			session.setAttribute("courseCode", true);
-			return "static/newCourseForm";
+			return "newCourseForm";
 		}
 		if (courseForm.getName().equals("")) {
 			courseForm.setName(courseForm.getCourseCode());
@@ -58,7 +58,7 @@ public class CourseController {
 			courseForm.setMetaUsername(((User) session.getAttribute("User")).getUsername());
 			courseDao.createCourse(courseForm);
 		} catch (Exception err) {
-			return "static/newCourseForm";
+			return "newCourseForm";
 		}
 		return "allCourses";
 	}
@@ -79,7 +79,7 @@ public class CourseController {
 		TimeslotForm blankForm = new TimeslotForm();
 		model.addAttribute("courses", courseDao.getCoursesForUser((User) session.getAttribute("User")));
 		model.addAttribute("timeslotForm", blankForm);
-		return "static/newTimeslotForm";
+		return "newTimeslotForm";
 	}
 
 	@RequestMapping("/doAddTimeslot")
@@ -98,7 +98,7 @@ public class CourseController {
 			timeslot.setId(timeslotMetaID++);
 			courseDao.getCourseByID(timeslotForm.getMetaCourseId()).getTimeslots().add(timeslot);
 		} catch (Exception err) {
-			return "static/newTimeslotForm";
+			return "newTimeslotForm";
 		}
 		return "dashboard";
 	}
@@ -110,7 +110,7 @@ public class CourseController {
 		model.addAttribute("courseForm", blankForm);
 		model.addAttribute("timeslots", timeslotDao.getAllTimeslotsForUser((User) session.getAttribute("User")));
 		model.addAttribute("course", courseDao.getCourseByID(Integer.parseInt(request.getParameter("id"))));
-		return "static/viewCourse";
+		return "viewCourse";
 	}
 
 	@RequestMapping("/updateCourseInfo")
@@ -118,8 +118,8 @@ public class CourseController {
 		try {
 
 		} catch (Exception err) {
-			return "static/viewCourse";
+			return "viewCourse";
 		}
-		return "static/viewCourse";
+		return "viewCourse";
 	}
 }

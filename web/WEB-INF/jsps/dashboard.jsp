@@ -23,7 +23,7 @@
               </div>
               <h4>To-do</h4>
               <div class="container-fluid">
-                  <%@include file="Placeholders/todoList.jsp"%>
+                  <%@include file="component/todo.jsp"%>
               </div>
 
           </div>

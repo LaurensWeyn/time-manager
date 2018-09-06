@@ -7,12 +7,12 @@
 
 <head>
     <title>Student Time Management System</title>
-    <%@include file="../common/headerIncludes.jsp" %>
+    <%@include file="common/headerIncludes.jsp" %>
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
 </head>
 
 <body>
-<%@include file="../common/navbar.jsp" %>
+<%@include file="common/navbar.jsp" %>
 <br>
 <div class="container-fluid">
     <div class="row">
@@ -25,7 +25,7 @@
                         <div class="field-name">Course Code</div>
                         <div class="form-group">
                             <sf:select class="form-control" path="metaCourseId">
-                                <%@include file="../component/activeCourses.jsp" %>
+                                <%@include file="component/activeCourses.jsp" %>
                             </sf:select>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         <div class="field-name">Start Time</div>
                         <div class="form-group">
                             <sf:select class="form-control" path="startTime">
-                                <%@include file="../component/times.jsp" %>
+                                <%@include file="static/times.jsp" %>
                                 <!-- TODO: select course from which you got redirected from-->
                             </sf:select>
                         </div>
@@ -87,7 +87,7 @@
                         <div class="field-name">End Time</div>
                         <div class="form-group">
                             <sf:select class="form-control" path="endTime">
-                                <%@include file="../component/times.jsp" %>
+                                <%@include file="static/times.jsp" %>
                                 <!-- TODO: select course from which you got redirected from-->
                             </sf:select>
                         </div>
