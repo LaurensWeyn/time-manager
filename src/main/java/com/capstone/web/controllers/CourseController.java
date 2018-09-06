@@ -19,8 +19,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class CourseController {
-	private static long courseMetaID = 3;
-	private static long timeslotMetaID = 3;
 	private CourseDao courseDao;
 	private TimeslotDao timeslotDao;
 	private EventDao eventDao;
@@ -43,7 +41,7 @@ public class CourseController {
 	@RequestMapping("/addCourse")
 	public String addCourse(Model model, HttpSession session) {
 		CourseForm blankForm = new CourseForm();
-		blankForm.setMetaId(courseMetaID++);
+		blankForm.setMetaId(-1);
 		model.addAttribute("courses", courseDao.getCoursesForUser((User) session.getAttribute("User")));
 		model.addAttribute("courseForm", blankForm);
 		return "newCourseForm";
@@ -76,9 +74,28 @@ public class CourseController {
 		return "";
 	}
 
-	@RequestMapping("/deleteCourse")
-	public String deleteCourse(HttpSession session) {
-		return "";
+	@RequestMapping("/removeCourse")
+	public String deleteCourse(HttpSession session, HttpServletRequest request) {
+		courseDao.deleteCourse(Integer.parseInt(request.getParameter("courseID")));
+		return "allCourses";
+	}
+
+	@RequestMapping("/editCourse")
+	public String editCourse(HttpSession session, Model model, HttpServletRequest request) {
+		CourseForm courseForm = new CourseForm();
+		model.addAttribute("courseForm", courseForm);
+		model.addAttribute("course", courseDao.getCourseByID(Integer.parseInt(request.getParameter("courseId"))));
+		return "editCourse";
+	}
+
+	@RequestMapping("/doEditCourse")
+	public String doEditCourse(){
+		try {
+
+		} catch (Exception err) {
+			return "editCourse";
+		}
+		return "allCourses";
 	}
 
 	@RequestMapping("/addTimeslot")
@@ -103,7 +120,7 @@ public class CourseController {
 			timeslot.setStartTime(new Time(timeslotForm.getStartTime()));
 			timeslot.setEndTime(new Time(timeslotForm.getEndTime()));
 			timeslot.setParentCourse(courseDao.getCourseByID(timeslotForm.getMetaCourseId()));
-			timeslot.setId(timeslotMetaID++);
+			timeslot.setId(-1);
 			courseDao.getCourseByID(timeslotForm.getMetaCourseId()).getTimeslots().add(timeslot);
 		} catch (Exception err) {
 			return "newTimeslotForm";
@@ -116,15 +133,20 @@ public class CourseController {
 		System.out.println("Mapping Course View");
 		CourseForm blankForm = new CourseForm();
 		model.addAttribute("courseForm", blankForm);
+		model.addAttribute("courses",courseDao.getCoursesForUser((User) session.getAttribute("User")));
 		model.addAttribute("timeslots", timeslotDao.getAllTimeslotsForUser((User) session.getAttribute("User")));
-		model.addAttribute("course", courseDao.getCourseByID(Integer.parseInt(request.getParameter("id"))));
+		model.addAttribute("course", courseDao.getCourseByID(Integer.parseInt(request.getParameter("courseId"))));
 		return "viewCourse";
 	}
 
-	@RequestMapping("/updateCourseInfo")
-	public String updateCourseInfo(HttpSession session, CourseForm courseForm) {
-		try {
+	@RequestMapping("/updateEventInfo")
+	public String updateCourseInfo(HttpSession session, EventForm eventForm, HttpServletRequest request) {
+		// TODO: add ability to change the metaCourseID
+		eventForm.setDescription(eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))).getDescription());
+		eventForm.setType(eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))).getType());
 
+		try {
+			eventDao.editEvent(eventForm);
 		} catch (Exception err) {
 			return "viewCourse";
 		}
@@ -134,9 +156,10 @@ public class CourseController {
 	@RequestMapping("/editEvent")
 	public String viewEventEdit(Model model, HttpServletRequest request, HttpSession session) {
 		model.addAttribute("eventForm", new EventForm());
-		model.addAttribute("course",eventDao.getEventByID(Integer.parseInt(request.getParameter("id"))).getParentCourse());
-		model.addAttribute("event", eventDao.getEventByID(Integer.parseInt(request.getParameter("id"))));
+		model.addAttribute("course",eventDao.getEventByID(Integer.parseInt(request.getParameter("courseId"))).getParentCourse());
+		model.addAttribute("event", eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))));
 		model.addAttribute("courses", courseDao.getCoursesForUser((User) session.getAttribute("User")));
 		return "assignmentEventEdit";
 	}
+
 }

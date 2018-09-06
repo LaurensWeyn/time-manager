@@ -2,12 +2,11 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="en">
-<html>
 
 <head>
     <title>Student Time Management System</title>
     <%@include file="common/headerIncludes.jsp" %>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/assignment.css">
+    <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/assignment.css">--%>
 </head>
 
 <body>
@@ -20,7 +19,7 @@
             <sf:form method="post" action="${pageContext.request.contextPath}/updateCourseInfo"
                      modelAttribute="courseForm">
                 <h4 style="text-align: center;">Viewing Course info for <c:out
-                        value="${course.code}"/></h4> <!--TODO: GET ACTUAL COURSE BY ID DYNAMICALLY-->
+                        value="${course.code}"/></h4>
                 <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
                     <div class="card-body">
                         <div class="field-name">Course Name</div>
@@ -31,14 +30,9 @@
                     <div class="card-body">
                         <div class="field-name">Course Code</div>
                         <div class="form-group">
-                            <sf:input class="form-control" path="courseCode" placeholder="${course.code}"/>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="field-name">Lecturer</div>
-                        <div class="form-group"> <!-- TODO: not a useful field as it stands-->
-                            <input type="text" class="form-control" id="courseLecturer" name="Assignment Name"
-                                   placeholder="Matt. E. Matics">
+                            <sf:select class="form-control" path="courseCode">
+                                <%@include file="component/activeCourses.jsp" %>
+                            </sf:select>
                         </div>
                     </div>
                     <div class="card">
@@ -55,23 +49,15 @@
                         <br>
                         <form>
                             <input name="courseID" type="hidden" value="${course.id}"/>
-                            <a href="/addTimeslot?courseId=${course.id}" type="button" class="btn btn-info">Add</a>
+                            <a href="${pageContext.request.contextPath}/addTimeslot?courseId=${course.id}" type="button"
+                               class="btn btn-info">Add</a>
                         </form>
                         <br>
                     </div>
-                    <div class="card-body">
-                        <div class="field-name">Lecture Location</div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="lecturePlace" name="Assignment Name"
-                                   placeholder="NSLT">
-                        </div>
-                    </div>
-                    <div class="form-group" style="width:1376px">
-                        <label for="comment" style="margin-left: 22px;">Description:</label>
-                        <textarea class="form-control" rows="5" id="comment"
-                                  style="margin-left: 22px;margin-right:22px;">Currently covering integration by parts. A M A Z I N G stuff.</textarea>
-                    </div>
+
                 </div>
+                <button type="submit" class="btn btn-default" style="margin-left: 45%">Update Course Information
+                </button>
             </sf:form>
         </div>
     </div>

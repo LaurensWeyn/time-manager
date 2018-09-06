@@ -27,3 +27,5 @@
 <option value="120"> 20:00 </option>
 <option value="123"> 20:30 </option>
 <option value="126"> 21:00 </option>
+
+<!-- Working off the assumption that most things happen on the hour, or half an hour -->

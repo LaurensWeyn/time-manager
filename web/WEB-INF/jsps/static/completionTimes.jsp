@@ -9,3 +9,5 @@
 <option value="270">4 Hours 30 Minutes</option>
 <option value="300">5 Hours</option>
 <option value="99999">More than 5 Hours</option>
+
+<!-- If something is going to take more than 5 hours, it will be marked as very important -->

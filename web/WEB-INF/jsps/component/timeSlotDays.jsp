@@ -5,8 +5,6 @@
   Time: 23:25
   To change this template use File | Settings | File Templates.
 --%>
-
-<!--TODO: get the days a particular timeslot is for, highlight them as seen in viewCourse.jsp-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -18,7 +16,7 @@
     <c:forEach var="i" begin="0" end="${fn:length(timeslot.daysOfWeek)}" step="1">
         <c:if test="${fn:substring(timeslot.daysOfWeek, i, i + 1) == 'Y'}">
             <div class="card-body"style="display:inline;"><span class="badge badge-pill badge-danger">Mo</span>
-            </div>
+            </div> <!-- TODO: find a way to make the Mo dynamic to Mo, Tu, We, Th, Fr...-->
         </c:if>
         <c:if test="${fn:substring(timeslot.daysOfWeek, i, i + 1) != 'Y'}">
             <div class="card-body"style="display:inline;"><span class="badge badge-pill badge-secondary">Mo</span>
@@ -35,6 +33,9 @@
             Tutorial
         </c:if>
     </div>
+        <div class="card-body"style="display:inline;">
+            <c:out value="${timeslot.venue}"/>
+        </div>
     <div class="card-body"style="display:inline;">
         <c:out value="${timeslot.startTime.string24}"/>
     </div>
