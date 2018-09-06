@@ -3,7 +3,7 @@
 
 <h3>Upcoming</h3>
 <div class="container-fluid">
-    <script src="static/dashboard.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/dashboard.js"></script>
     <%--@elvariable id="upcomingEvents" type="java.util.List<com.capstone.db.dto.EventGroup>"--%>
     <c:forEach items="${upcomingEvents}" var="eventGroup">
         <br>

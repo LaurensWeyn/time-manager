@@ -7,7 +7,7 @@
 <head>
     <title>Student Time Management System</title>
     <%@include file="common/headerIncludes.jsp" %>
-    <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/assignment.css">
 </head>
 
 <body>

@@ -7,10 +7,10 @@
 <head>
     <title>Student Time Management System</title>
     <%@include file="common/headerIncludes.jsp"%>
-    <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
-    <script src="static/assignmentForm.js"></script>
-    <link rel="stylesheet" type="text/css" href="/static/css/prepped/bootstrap-datetimepicker.min.css"
-    <script src="/static/js/prepped/bootstrap-datetimepicker.min.js"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/js/assignemnt.css">
+    <script src="${pageContext.request.contextPath}/static/js/assignmentForm.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/prepped/bootstrap-datetimepicker.min.css"/>
+    <script src="${pageContext.request.contextPath}/static/js/prepped/bootstrap-datetimepicker.min.js"></script>
 
 
 </head>

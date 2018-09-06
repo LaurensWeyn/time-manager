@@ -7,16 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
     <title>Student Time Management System</title>
     <%@include file="common/headerIncludes.jsp"%>
-    <link rel='stylesheet' href='/static/css/prepped/fullcalendar.css' />
-    <script src='/static/js/prepped/jquery.min.js'></script>
-    <script src='/static/js/prepped/moment.min.js'></script>
-    <script src='/static/js/prepped/fullcalendar.js'></script>
-    <script type='text/javascript' src='static/gcal.js'></script>
+    <link rel='stylesheet' href='<c:url value="${pageContext.request.contextPath}/static/css/prepped/fullcalendar.css"/>' />
+    <script src='${pageContext.request.contextPath}/static/js/prepped/jquery.min.js'></script>
+    <script src='${pageContext.request.contextPath}/static/js/prepped/moment.min.js'></script>
+    <script src='${pageContext.request.contextPath}/static/js/prepped/fullcalendar.js'></script>
     <script>
         $(function() {
 

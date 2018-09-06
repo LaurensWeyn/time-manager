@@ -7,7 +7,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/dashboard.css">
 
 <%--@elvariable id="courses" type="java.util.List<com.capstone.db.dto.Course>"--%>
 <c:forEach items="${courses}" var="course">
