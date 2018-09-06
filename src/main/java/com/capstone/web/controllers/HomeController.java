@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.capstone.db.dao.UserDao;
+import com.capstone.db.dto.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -21,7 +23,6 @@ import com.capstone.db.dao.TimeslotDao;
 import com.capstone.db.dto.EventGroup;
 import com.capstone.db.dto.Timeslot;
 import com.capstone.db.dto.User;
-import org.springframework.web.jsf.FacesContextUtils;
 
 @Controller
 public class HomeController
@@ -29,6 +30,10 @@ public class HomeController
     private CourseDao courseDao;
     private TimeslotDao timeslotDao;
     private EventDao eventDao;
+    private UserDao userDao;
+
+    @Autowired
+    public void setUserDao (UserDao userDao) { this.userDao = userDao;}
 
     @Autowired
     public void setCourseDao(CourseDao courseDao)
@@ -61,6 +66,7 @@ public class HomeController
     public String showDashboard(HttpSession session, Authentication authentication)
     {
         User user = new User(authentication);
+        session.setAttribute("User", user);
 
         int dayOfWeek = 2;//for demo purposes, this will be a constant so it actually works on the day.
         //(Also, it is permanently Wednesday, my dudes)
@@ -89,6 +95,9 @@ public class HomeController
     @RequestMapping("/viewAllCourses")
     public String showAllCourses(HttpSession session){
         System.out.println("Mapping all courses");
+        User user = (User) session.getAttribute("User");
+        List<Course> courses = courseDao.getCoursesForUser(user);
+        session.setAttribute("courses", courses);
         return "allCourses";
     }
 

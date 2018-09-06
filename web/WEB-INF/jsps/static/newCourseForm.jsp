@@ -13,7 +13,7 @@
 
 <head>
     <title>Student Time Management System</title>
-    <%@include file="../common/headerIncludes.jsp"%>
+    <%@include file="../common/headerIncludes.jsp" %>
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
 </head>
 
@@ -24,7 +24,8 @@
         <div class="col-sm-12">
             <h4 style="text-align: center;"> Adding new Course </h4>
             <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
-                <sf:form method="post" action="${pageContext.request.contextPath}/doAddCourse" modelAttribute="courseForm">
+                <sf:form method="post" action="${pageContext.request.contextPath}/doAddCourse"
+                         modelAttribute="courseForm">
 
                     <div class="card-body">
 
@@ -43,7 +44,8 @@
                     <div class="card-body">
                         <div class="field-name">Course Name</div>
                         <div class="form-group">
-                            <sf:input type="text" class="form-control" id="courseName" path="name" placeholder="Advanced biochemistry"/>
+                            <sf:input type="text" class="form-control" id="courseName" path="name"
+                                      placeholder="Advanced biochemistry"/>
                         </div>
                     </div>
 

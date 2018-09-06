@@ -7,7 +7,7 @@
 
 <head>
     <title>Student Time Management System</title>
-    <%@include file="../common/headerIncludes.jsp"%>
+    <%@include file="../common/headerIncludes.jsp" %>
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
 </head>
 
@@ -18,13 +18,14 @@
     <div class="row">
         <div class="col-sm-12">
             <h4 style="text-align: center;">Add Course Timeslot</h4>
-            <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
-                <div class="card-body">
-                    <sf:form method="post" action="${pageContext.request.contextPath}/doAddTimeslot" modelAttribute="timeslotForm">
+            <sf:form method="post" action="${pageContext.request.contextPath}/doAddTimeslot?id=${param.get('id')}"
+                     modelAttribute="timeslotForm">
+                <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
+                    <div class="card-body">
                         <div class="field-name">Course Code</div>
                         <div class="form-group">
                             <sf:select class="form-control" path="metaCourseId">
-                                <%@include file="../component/activeCourses.jsp" %> <!-- TODO: select course from which you got redirected from-->
+                                <%@include file="../component/activeCourses.jsp" %>
                             </sf:select>
                         </div>
                     </div>
@@ -66,26 +67,34 @@
                             <label class="custom-control-label" for="friday">Friday</label>
                         </div>
                     </div>
-                <!--TODO: advanced view gets to type their times-->
+                    <!--TODO: advanced view gets to type their times-->
+                    <c:if test="${timeError != null}">
+                        <div class="alert alert-danger alert-dismissible">
+                            <strong>Start Time cannot be less than End Time.</strong>
+                        </div>
+                    </c:if>
+
                     <div class="card-body">
                         <div class="field-name">Start Time</div>
                         <div class="form-group">
                             <sf:select class="form-control" path="startTime">
-                                <%@include file="../component/times.jsp" %> <!-- TODO: select course from which you got redirected from-->
+                                <%@include file="../component/times.jsp" %>
+                                <!-- TODO: select course from which you got redirected from-->
                             </sf:select>
                         </div>
                     </div>
-                <div class="card-body">
-                    <div class="field-name">End Time</div>
-                    <div class="form-group">
-                        <sf:select class="form-control" path="endTime">
-                            <%@include file="../component/times.jsp" %> <!-- TODO: select course from which you got redirected from-->
-                        </sf:select>
+                    <div class="card-body">
+                        <div class="field-name">End Time</div>
+                        <div class="form-group">
+                            <sf:select class="form-control" path="endTime">
+                                <%@include file="../component/times.jsp" %>
+                                <!-- TODO: select course from which you got redirected from-->
+                            </sf:select>
+                        </div>
                     </div>
+                    <button type="submit" class="btn btn-info">Add Timeslot</button>
                 </div>
-                <button type="submit" class="btn btn-info">Add Timeslot</button>
-                </sf:form>
-            </div>
+            </sf:form>
         </div>
     </div>
 </div>

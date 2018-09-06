@@ -1,23 +1,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="en">
 <html>
 
 <head>
     <title>Student Time Management System</title>
-    <%@include file="../common/headerIncludes.jsp"%>
+    <%@include file="common/headerIncludes.jsp"%>
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
     <script src="static/assignmentForm.js"></script>
 </head>
 <!-- TODO: !IMPORTANT, Figure out why the page scrolls off to the right by like, a lot -->
 <body>
-<%@include file="../common/navbar.jsp" %>
+<%@include file="common/navbar.jsp" %>
 <br>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
             <h4 style="text-align: center;">Edit Assignment: Capstone Stage 3</h4>
+            <%--@elvariable id="course" type="com.capstone.db.dto.Course"--%>
+            <sf:form method="post" action="${pageContext.request.contextPath}/editAssignment"
+                     modelAttribute="courseForm">
             <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
                 <div class="card-body">
                     <div class="field-name">Assignment Name</div>
@@ -53,32 +56,17 @@
                 <div class="form-group" style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
                     <label for="complete">Time to complete:</label>
                     <select class="form-control" id="complete">
-                        <option>30 Minutes</option>
-                        <option>1 Hour</option>
-                        <option>1 Hour 30 Minutes</option>
-                        <option>2 Hours</option>
-                        <option>2 Hours 30 Minutes</option>
-                        <option>3 Hours</option>
-                        <option>3 Hours 30 Minutes</option>
-                        <option>4 Hours</option>
-                        <option>4 Hours 30 Minutes</option>
-                        <option>5 Hours</option>
-                        <option>More than 5 Hours</option>
+                        <%@include file="component/completionTimes.jsp"%>
                     </select>
                 </div>
                 <div class="form-group"style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
                     <label for="importance">Importance:</label>
                     <select class="form-control" id="importance">
-                        <option>Absolute</option>
-                        <option>Critical</option>
-                        <option>Major</option>
-                        <option>Average</option>
-                        <option>Minor</option>
-                        <option>Negligible</option>
-                        <option>Least Concern</option>
+                        <%@include file="component/importance.jsp"%>
                     </select>
                 </div>
             </div>
+            </sf:form>
         </div>
     </div>
 </div>
