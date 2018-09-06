@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-sm-12">
             <h4 style="text-align: center;">Add Course Timeslot</h4>
-            <sf:form method="post" action="${pageContext.request.contextPath}/doAddTimeslot?id=${param.get('id')}"
+            <sf:form method="post" action="${pageContext.request.contextPath}/doAddTimeslot?courseId=${param.get('id')}"
                      modelAttribute="timeslotForm">
                 <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
                     <div class="card-body">

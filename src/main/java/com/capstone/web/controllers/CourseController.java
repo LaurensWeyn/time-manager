@@ -1,11 +1,13 @@
 package com.capstone.web.controllers;
 
 import com.capstone.db.dao.CourseDao;
+import com.capstone.db.dao.EventDao;
 import com.capstone.db.dao.TimeslotDao;
 import com.capstone.db.dto.Timeslot;
 import com.capstone.db.dto.User;
 import com.capstone.util.Time;
 import com.capstone.web.forms.CourseForm;
+import com.capstone.web.forms.EventForm;
 import com.capstone.web.forms.TimeslotForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,12 @@ public class CourseController {
 	private static long timeslotMetaID = 3;
 	private CourseDao courseDao;
 	private TimeslotDao timeslotDao;
+	private EventDao eventDao;
+
+	@Autowired
+	public void setEventDao(EventDao eventDao){
+		this.eventDao = eventDao;
+	}
 
 	@Autowired
 	public void setCourseDao(CourseDao courseDao) {
@@ -121,5 +129,14 @@ public class CourseController {
 			return "viewCourse";
 		}
 		return "viewCourse";
+	}
+
+	@RequestMapping("/editEvent")
+	public String viewEventEdit(Model model, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("eventForm", new EventForm());
+		model.addAttribute("course",eventDao.getEventByID(Integer.parseInt(request.getParameter("id"))).getParentCourse());
+		model.addAttribute("event", eventDao.getEventByID(Integer.parseInt(request.getParameter("id"))));
+		model.addAttribute("courses", courseDao.getCoursesForUser((User) session.getAttribute("User")));
+		return "assignmentEventEdit";
 	}
 }

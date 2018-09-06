@@ -26,8 +26,6 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="viewMenu">
                     <a class="dropdown-item" href="/viewAllCourses">Courses</a>
-                    <a class="dropdown-item" href="#">To-Do</a>
-                    <a class="dropdown-item" href="#">Events</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

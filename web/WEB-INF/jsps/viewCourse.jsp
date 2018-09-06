@@ -55,7 +55,7 @@
                         <br>
                         <form>
                             <input name="courseID" type="hidden" value="${course.id}"/>
-                            <a href="/addTimeslot?id=${course.id}" type="button" class="btn btn-info">Add</a>
+                            <a href="/addTimeslot?courseId=${course.id}" type="button" class="btn btn-info">Add</a>
                         </form>
                         <br>
                     </div>

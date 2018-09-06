@@ -15,3 +15,8 @@ function setCurrentProgress(){
 updateProgress(document.getElementById('customRange').valueOf()); //Placeholder 50, need to dynamically update progress from DB
 // setCurrentProgress();
 //TODO: get last progress, then set the current progress
+
+function getDate(humanDate){
+    var date = new Date();
+
+}

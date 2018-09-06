@@ -14,7 +14,7 @@
 
 <%--@elvariable id="timeslots" type="java.util.List<com.capstone.db.dto.Timeslot>"--%>
 <c:forEach items="${timeslots}" var="timeslot">
-    <c:if test="${timeslot.parentCourse.id == param.get('id')}">
+    <c:if test="${timeslot.parentCourse.id == param.get('courseId')}">
     <c:forEach var="i" begin="0" end="${fn:length(timeslot.daysOfWeek)}" step="1">
         <c:if test="${fn:substring(timeslot.daysOfWeek, i, i + 1) == 'Y'}">
             <div class="card-body"style="display:inline;"><span class="badge badge-pill badge-danger">Mo</span>

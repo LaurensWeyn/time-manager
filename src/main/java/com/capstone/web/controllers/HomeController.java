@@ -80,12 +80,6 @@ public class HomeController
         return "dashboard";//maps to jsps/[string].jsp
     }
 
-    @RequestMapping("/editEvent")
-    public String showAssignment(HttpSession session){
-        System.out.println("Mapping Assignment View");
-        return "Placeholders/assignmentEditAdvanced";
-    }
-
     @RequestMapping("calendar")
     public String showCalendar(HttpSession session){
         System.out.println("Mapping Calendar");

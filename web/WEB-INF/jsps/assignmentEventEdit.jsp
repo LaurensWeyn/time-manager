@@ -9,6 +9,10 @@
     <%@include file="common/headerIncludes.jsp"%>
     <link rel="stylesheet" type="text/css" href="/static/assignemnt.css">
     <script src="static/assignmentForm.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/prepped/bootstrap-datetimepicker.min.css"
+    <script src="/static/js/prepped/bootstrap-datetimepicker.min.js"/>
+
+
 </head>
 <!-- TODO: !IMPORTANT, Figure out why the page scrolls off to the right by like, a lot -->
 <body>
@@ -17,29 +21,38 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <h4 style="text-align: center;">Edit Assignment: Capstone Stage 3</h4>
             <%--@elvariable id="course" type="com.capstone.db.dto.Course"--%>
-            <sf:form method="post" action="${pageContext.request.contextPath}/editAssignment"
-                     modelAttribute="courseForm">
+                <%--@elvariable id="event" type="com.capstone.db.dto.Event"--%>
+            <sf:form method="post" action="${pageContext.request.contextPath}/updateCourseInfo"
+                     modelAttribute="eventForm">
+            <h4 style="text-align: center;">Edit Assignment: <c:out value="${event.name}"/></h4>
             <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
                 <div class="card-body">
                     <div class="field-name">Assignment Name</div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="assignmentName" name="Assignment Name" placeholder="Capstone Stage 3" >
+                        <sf:input path="name" class="form-control" placeholder="${event.name}"/>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="field-name">Assignment Due Date</div>
                     <div class="form-group"> <!--TODO: make popup calendar -->
-                        <input type="text" class="form-control" id="assignmentDue" name="Assignment Name" placeholder="08/18" >
+                        <div class="input-append date form_datetime">
+                            <input size="16" type="text" value="" readonly>
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div>
+
+                        <script type="text/javascript">
+                            $(".form_datetime").datetimepicker({
+                                format: "dd MM yyyy - hh:ii"
+                            });
+                        </script>
+
                     </div>
-                </div>
                 <div class="card-body" style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
                         <label for="course">Assignment Course</label>
                     <div class="form-group" style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
                         <select class="form-control" id="course">
-                            <option selected>CSC3003S</option> <!-- TODO: OOF this needs to be done d ynamically -->
-                            <option>MAM2000W</option>
+                            <%@include file="component/activeCourses.jsp"%>
                         </select>
                     </div>
                 </div>
@@ -56,7 +69,7 @@
                 <div class="form-group" style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
                     <label for="complete">Time to complete:</label>
                     <select class="form-control" id="complete">
-                        <%@include file="component/completionTimes.jsp"%>
+                        <%@include file="static/completionTimes.jsp"%>
                     </select>
                 </div>
                 <div class="form-group"style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
