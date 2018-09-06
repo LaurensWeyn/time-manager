@@ -2,7 +2,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="en">
-<html>
 
 <head>
     <title>Student Time Management System</title>

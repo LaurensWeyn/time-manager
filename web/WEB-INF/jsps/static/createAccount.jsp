@@ -59,7 +59,7 @@
                     <sf:form method="post" action="${pageContext.request.contextPath}/doCreateAccount" modelAttribute="userForm">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Username</span>
+                                <span class="input-group-text">Username</span> <!--TODO: !!!!! SUPER IMPORTANT; USERNAME MUST BE AN EMAIL ADDRESS !!!!-->
                             </div>
                             <sf:input type="text" class="form-control" placeholder="Enter Username" path="username"/>
                         </div>

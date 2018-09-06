@@ -3,7 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="en">
-<html>
 
 <head>
     <title>Student Time Management System</title>
@@ -45,7 +44,7 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="field-name">Day</div>
+                        <div class="field-name" style="margin-right:15px;">Day:</div>
                         <div class="custom-control custom-checkbox" style="white-space:nowrap;display:inline;">
                             <sf:checkbox class="custom-control-input" id="monday" value="m" path="daysOfWeek"/>
                             <label class="custom-control-label" for="monday">Monday</label>
@@ -79,7 +78,6 @@
                         <div class="form-group">
                             <sf:select class="form-control" path="startTime">
                                 <%@include file="static/times.jsp" %>
-                                <!-- TODO: select course from which you got redirected from-->
                             </sf:select>
                         </div>
                     </div>
@@ -88,7 +86,6 @@
                         <div class="form-group">
                             <sf:select class="form-control" path="endTime">
                                 <%@include file="static/times.jsp" %>
-                                <!-- TODO: select course from which you got redirected from-->
                             </sf:select>
                         </div>
                     </div>

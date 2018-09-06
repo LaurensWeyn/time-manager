@@ -9,7 +9,7 @@
                     <%--link to course:--%>
                 <form>
                     <input name="courseID" type="hidden" value="${timeslot.parentCourse.id}"/>
-                    <a href="${pageContext.request.contextPath}/viewCourse?id=${timeslot.parentCourse.id}"
+                    <a href="${pageContext.request.contextPath}/viewCourse?courseId=${timeslot.parentCourse.id}"
                        style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
                 </form>
                 <div class="card-body">

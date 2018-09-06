@@ -26,11 +26,11 @@
 
 <div class="container">
 
-    <div class="row">
+    <div class="row" style="margin-top: 25%">
         <div class="col-lg-12">
-            <h1 class="page-header">Student Time Management System
-                <small class="lightText">STMS</small>
-            </h1>
+            <%--<h1 class="page-header">Student Time Management System--%>
+                <%--<small class="lightText">STMS</small>--%>
+            <%--</h1>--%>
 
             <%--Show login error if applicable--%>
             <c:if test="${param.error != null}">
@@ -48,9 +48,8 @@
                 </div>
                 <div class="card-body">
                     <form name = "f" action="${pageContext.request.contextPath}/login" method="POST">
-                        <%--TODO add autofocus JavaScript to username field--%>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                            <input type="text" autofocus class="form-control" id="username" name="username" placeholder="Username">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password">

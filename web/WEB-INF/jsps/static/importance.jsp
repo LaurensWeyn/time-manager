@@ -5,3 +5,5 @@
 <option value="5">Minor</option>
 <option value="6">Negligible</option>
 <option value="7">Least Concern</option>
+
+<!-- Easy way to keep track of all the priorities-->

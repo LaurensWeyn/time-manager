@@ -12,12 +12,16 @@
 <%--@elvariable id="courses" type="java.util.List<com.capstone.db.dto.Course>"--%>
 <c:forEach items="${courses}" var="course">
     <div class="card">
-        <a href="${pageContext.request.contextPath}/viewCourse?id=${course.id}" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
+        <a href="${pageContext.request.contextPath}/viewCourse?courseId=${course.id}" style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
         <div class="card-body">
             <c:out value="${course.name}"/><br>
             <div class="schedule-text">
                <strong> Course Code:</strong> <c:out value="${course.code}"/> <%--Course name--%>
             </div>
         </div>
+    </div>
+    <div class="buttonContainer">
+        <div type="button" href="${pageContext.request.contextPath}/editCourse?courseId=${course.id}" class="btn btn-info" style="margin-left:1em;margin-right:1em;width:47% !important;">Edit</div>
+        <div type="button" href="${pageContext.request.contextPath}/removeCourse?courseId=${course.id}" class="btn btn-danger" style="margin-left:1em;margin-right:1em;width:47% !important;">Remove</div>
     </div>
 </c:forEach>
