@@ -21,12 +21,6 @@ import javax.servlet.http.HttpSession;
 public class CourseController {
 	private CourseDao courseDao;
 	private TimeslotDao timeslotDao;
-	private EventDao eventDao;
-
-	@Autowired
-	public void setEventDao(EventDao eventDao){
-		this.eventDao = eventDao;
-	}
 
 	@Autowired
 	public void setCourseDao(CourseDao courseDao) {
