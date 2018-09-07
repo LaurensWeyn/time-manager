@@ -78,7 +78,7 @@
                     </select>
                 </div>
             </div>
-                <button type="submit" class="btn btn-info">Add Timeslot</button>
+                <button type="submit" class="btn btn-info">Confirm</button>
             </sf:form>
         </div>
     </div>

@@ -45,7 +45,7 @@ public class EventController {
 	}
 
     @RequestMapping("/updateEventInfo")
-    public String updateCourseInfo(Model model, EventForm eventForm, HttpServletRequest request) {
+    public String updateCourseInfo(HttpSession session, Model model, EventForm eventForm, HttpServletRequest request, Authentication auth) {
         Event event = eventDao.getEventByID(Long.parseLong(request.getParameter("eventId")));
         Course course = courseDao.getCourseByID(Long.parseLong(request.getParameter("courseId")));
         //NOTE why was the form updated by the original event? It goes this way around
@@ -55,9 +55,9 @@ public class EventController {
         try {
             eventDao.editEvent(eventForm);
         } catch (Exception err) {
-            return "viewCourse";
+            err.printStackTrace();
         }
-        return "viewCourse";
+        return HomeController.prepareDashboard(session, timeslotDao, eventDao, new User(auth));
     }
 
     @RequestMapping("/editEvent")
@@ -67,7 +67,7 @@ public class EventController {
         form.setMetaId(Long.parseLong(request.getParameter("eventId")));
         form.setMetaUsername(auth.getName());
         model.addAttribute("eventForm", form);
-        model.addAttribute("course",eventDao.getEventByID(Integer.parseInt(request.getParameter("courseId"))).getParentCourse());
+        model.addAttribute("course", courseDao.getCourseByID(Integer.parseInt(request.getParameter("courseId"))));
         model.addAttribute("event", eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))));
         model.addAttribute("courses", courseDao.getCoursesForUser(new User(auth)));
         return "assignmentEventEdit";

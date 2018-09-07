@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="buttonContainer">
-        <div type="button" href="${pageContext.request.contextPath}/editCourse?courseId=${course.id}" class="btn btn-info" style="margin-left:1em;margin-right:1em;width:47% !important;">Edit</div>
-        <div type="button" href="${pageContext.request.contextPath}/removeCourse?courseId=${course.id}" class="btn btn-danger" style="margin-left:1em;margin-right:1em;width:47% !important;">Remove</div>
+        <a type="button" href="${pageContext.request.contextPath}/editCourse?courseId=${course.id}" class="btn btn-info" style="margin-left:1em;margin-right:1em;width:47% !important;">Edit</a>
+        <a type="button" href="${pageContext.request.contextPath}/removeCourse?courseId=${course.id}" class="btn btn-danger" style="margin-left:1em;margin-right:1em;width:47% !important;">Remove</a>
     </div>
 </c:forEach>

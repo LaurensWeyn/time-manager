@@ -89,14 +89,15 @@ public class CourseController {
 
 	@RequestMapping("/editCourse")
 	public String editCourse(HttpSession session, Model model, HttpServletRequest request) {
-		CourseForm courseForm = new CourseForm();
+	    Course course = courseDao.getCourseByID(Integer.parseInt(request.getParameter("courseId")));
+		CourseForm courseForm = new CourseForm(course);
 		model.addAttribute("courseForm", courseForm);
-		model.addAttribute("course", courseDao.getCourseByID(Integer.parseInt(request.getParameter("courseId"))));
+		model.addAttribute("course", course);
 		return "editCourse";
 	}
 
 	@RequestMapping("/doEditCourse")
-	public String doEditCourse(){
+	public String doEditCourse(HttpSession session, CourseForm form){
 		try {
 
 		} catch (Exception err) {

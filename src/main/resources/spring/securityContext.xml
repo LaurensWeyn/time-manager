@@ -53,6 +53,8 @@
     <security:intercept-url pattern="/doAddCourse" access="isAuthenticated()"/> <!-- Actually add the course-->
     <security:intercept-url pattern="/viewAllCourses" access="isAuthenticated()"/> <!-- view all courses of user-->
     <security:intercept-url pattern="/removeCourse" access="isAuthenticated()"/> <!-- Delete course-->
+    <security:intercept-url pattern="/editCourse" access="isAuthenticated()"/>
+    <security:intercept-url pattern="/doEditCourse" access="isAuthenticated()"/>
     <!-- Timeslots-->
     <security:intercept-url pattern="/doAddTimeslot" access="isAuthenticated()"/>
     <security:intercept-url pattern="/addTimeslot" access="isAuthenticated()"/> <!-- Adding a timeslot to a course-->

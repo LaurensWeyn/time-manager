@@ -71,6 +71,16 @@ public class CourseDao
             return null;
     }
 
+    public Course getCourseForEvent(long eventID)
+    {
+        SqlParameterSource paramSource = new MapSqlParameterSource("id", eventID);
+        List<Course> result = jdbc.query("SELECT id, code, name, priority, color FROM courses WHERE id = (SELECT courseid FROM events WHERE events.id = :id)", paramSource, courseRowMapper);
+        if(result.size() == 1)
+            return result.get(0);
+        else
+            return null;
+    }
+
     /**
      * Registers a new course on the database
      * @param form a form containing details of the course to register
