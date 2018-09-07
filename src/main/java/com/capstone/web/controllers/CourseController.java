@@ -89,9 +89,9 @@ public class CourseController {
 	}
 
 	@RequestMapping("/doEditCourse")
-	public String doEditCourse(){
+	public String doEditCourse(HttpSession session, CourseForm courseForm){
 		try {
-
+			courseDao.editCourse(courseForm);
 		} catch (Exception err) {
 			return "editCourse";
 		}
@@ -139,27 +139,5 @@ public class CourseController {
 		return "viewCourse";
 	}
 
-	@RequestMapping("/updateEventInfo")
-	public String updateCourseInfo(HttpSession session, EventForm eventForm, HttpServletRequest request) {
-		// TODO: add ability to change the metaCourseID
-		eventForm.setDescription(eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))).getDescription());
-		eventForm.setType(eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))).getType());
-
-		try {
-			eventDao.editEvent(eventForm);
-		} catch (Exception err) {
-			return "viewCourse";
-		}
-		return "viewCourse";
-	}
-
-	@RequestMapping("/editEvent")
-	public String viewEventEdit(Model model, HttpServletRequest request, HttpSession session) {
-		model.addAttribute("eventForm", new EventForm());
-		model.addAttribute("course",eventDao.getEventByID(Integer.parseInt(request.getParameter("courseId"))).getParentCourse());
-		model.addAttribute("event", eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))));
-		model.addAttribute("courses", courseDao.getCoursesForUser((User) session.getAttribute("User")));
-		return "assignmentEventEdit";
-	}
 
 }

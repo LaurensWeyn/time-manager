@@ -18,17 +18,18 @@
             padding-top: 50px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/loginpage.css">
 </head>
 <body>
 
 <%@include file="../common/navbar.jsp" %>
 
 <div class="container">
-    <div class="row">
+    <div class="row" style="margin-top: 25%">
         <div class="col-lg-12">
-            <h1 class="page-header">Student Time Management System
-                <small class="lightText">STMS</small>
-            </h1>
+            <%--<h1 class="page-header">Student Time Management System--%>
+                <%--<small class="lightText">STMS</small>--%>
+            <%--</h1>--%>
 
             <%--Show error if applicable--%>
             <c:if test="${passmismatch != null}">
