@@ -3,6 +3,8 @@ package com.capstone.web.controllers;
 import com.capstone.db.dao.CourseDao;
 import com.capstone.db.dao.EventDao;
 import com.capstone.db.dao.TimeslotDao;
+import com.capstone.db.dto.Course;
+import com.capstone.db.dto.Event;
 import com.capstone.db.dto.Timeslot;
 import com.capstone.db.dto.User;
 import com.capstone.util.Time;
@@ -10,12 +12,14 @@ import com.capstone.web.forms.CourseForm;
 import com.capstone.web.forms.EventForm;
 import com.capstone.web.forms.TimeslotForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class CourseController {
@@ -39,16 +43,16 @@ public class CourseController {
 	}
 
 	@RequestMapping("/addCourse")
-	public String addCourse(Model model, HttpSession session) {
+	public String addCourse(Model model, HttpSession session, Authentication auth) {
 		CourseForm blankForm = new CourseForm();
 		blankForm.setMetaId(-1);
-		model.addAttribute("courses", courseDao.getCoursesForUser((User) session.getAttribute("User")));
+		model.addAttribute("courses", courseDao.getCoursesForUser(new User(auth)));
 		model.addAttribute("courseForm", blankForm);
 		return "newCourseForm";
 	}
 
 	@RequestMapping("/doAddCourse")
-	public String doAddCourse(HttpSession session, CourseForm courseForm) {
+	public String doAddCourse(HttpSession session, CourseForm courseForm, Authentication auth) {
 		session.setAttribute("courseCode", null);
 
 		if (courseForm.getCourseCode().equals("")) {
@@ -61,11 +65,14 @@ public class CourseController {
 		courseForm.setColor(0);
 		courseForm.setPriority(4);
 		try {
-			courseForm.setMetaUsername(((User) session.getAttribute("User")).getUsername());
+			courseForm.setMetaUsername(new User(auth).getUsername());
 			courseDao.createCourse(courseForm);
 		} catch (Exception err) {
+			err.printStackTrace();
 			return "newCourseForm";
 		}
+		List<Course> courses = courseDao.getCoursesForUser(new User(auth));
+		session.setAttribute("courses", courses);
 		return "allCourses";
 	}
 
@@ -99,11 +106,12 @@ public class CourseController {
 	}
 
 	@RequestMapping("/addTimeslot")
-	public String addTimeslot(Model model, HttpSession session, HttpServletRequest request) {
+	public String addTimeslot(Model model, HttpSession session, HttpServletRequest request, Authentication auth) {
 		System.out.println("Mapping Add Timeslot");
 		TimeslotForm blankForm = new TimeslotForm();
-		model.addAttribute("courses", courseDao.getCoursesForUser((User) session.getAttribute("User")));
+		model.addAttribute("courses", courseDao.getCoursesForUser(new User(auth)));
 		model.addAttribute("timeslotForm", blankForm);
+		//model.addAttribute("courseId", request.getParameter("")//cannot fill in; need dropdown box value
 		return "newTimeslotForm";
 	}
 
@@ -129,37 +137,17 @@ public class CourseController {
 	}
 
 	@RequestMapping("/viewCourse")
-	public String viewCourse(Model model, HttpSession session, HttpServletRequest request) {
+	public String viewCourse(Model model, HttpSession session, HttpServletRequest request, Authentication auth) {
 		System.out.println("Mapping Course View");
+		User user = new User(auth);
 		CourseForm blankForm = new CourseForm();
 		model.addAttribute("courseForm", blankForm);
-		model.addAttribute("courses",courseDao.getCoursesForUser((User) session.getAttribute("User")));
-		model.addAttribute("timeslots", timeslotDao.getAllTimeslotsForUser((User) session.getAttribute("User")));
+		model.addAttribute("courses",courseDao.getCoursesForUser(user));
+		model.addAttribute("timeslots", timeslotDao.getAllTimeslotsForUser(user));
 		model.addAttribute("course", courseDao.getCourseByID(Integer.parseInt(request.getParameter("courseId"))));
 		return "viewCourse";
 	}
 
-	@RequestMapping("/updateEventInfo")
-	public String updateCourseInfo(HttpSession session, EventForm eventForm, HttpServletRequest request) {
-		// TODO: add ability to change the metaCourseID
-		eventForm.setDescription(eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))).getDescription());
-		eventForm.setType(eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))).getType());
 
-		try {
-			eventDao.editEvent(eventForm);
-		} catch (Exception err) {
-			return "viewCourse";
-		}
-		return "viewCourse";
-	}
-
-	@RequestMapping("/editEvent")
-	public String viewEventEdit(Model model, HttpServletRequest request, HttpSession session) {
-		model.addAttribute("eventForm", new EventForm());
-		model.addAttribute("course",eventDao.getEventByID(Integer.parseInt(request.getParameter("courseId"))).getParentCourse());
-		model.addAttribute("event", eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))));
-		model.addAttribute("courses", courseDao.getCoursesForUser((User) session.getAttribute("User")));
-		return "assignmentEventEdit";
-	}
 
 }

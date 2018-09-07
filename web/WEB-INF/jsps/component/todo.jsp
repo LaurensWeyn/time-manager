@@ -14,7 +14,7 @@
                     <%--link to course:--%>
                 <form>
                     <input name="eventID" type="hidden" value="${event.id}"/>
-                    <a href="${pageContext.request.contextPath}/completeEvent?id=${event.id}"
+                    <a href="${pageContext.request.contextPath}/completeEvent?eventId=${event.id}"
                        style="position: absolute;top:0;left:0;height:100%;width:100%;"></a>
                 </form>
                 <div class="card-body">

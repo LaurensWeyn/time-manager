@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.capstone.db.dao.UserDao;
-import com.capstone.db.dto.Course;
+import com.capstone.db.dto.*;
+import org.apache.http.protocol.HTTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -20,9 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.capstone.db.dao.CourseDao;
 import com.capstone.db.dao.EventDao;
 import com.capstone.db.dao.TimeslotDao;
-import com.capstone.db.dto.EventGroup;
-import com.capstone.db.dto.Timeslot;
-import com.capstone.db.dto.User;
 
 @Controller
 public class HomeController
@@ -66,8 +64,13 @@ public class HomeController
     public String showDashboard(HttpSession session, Authentication authentication)
     {
         User user = new User(authentication);
-        session.setAttribute("User", user);
 
+        //maps to jsps/[string].jsp
+        return prepareDashboard(session, timeslotDao, eventDao, user);
+    }
+
+    public static String prepareDashboard(HttpSession session, TimeslotDao timeslotDao, EventDao eventDao, User user)
+    {
         int dayOfWeek = 2;//for demo purposes, this will be a constant so it actually works on the day.
         //(Also, it is permanently Wednesday, my dudes)
         List<Timeslot> timeslots = timeslotDao.getAllTimeslotsForDayOfWeek(user, dayOfWeek);
@@ -77,7 +80,7 @@ public class HomeController
         List<EventGroup> events = EventGroup.buildEventGroups(eventDao.getAllEventsForUser(user));
         session.setAttribute("upcomingEvents", events);
 
-        return "dashboard";//maps to jsps/[string].jsp
+        return "dashboard";
     }
 
     @RequestMapping("calendar")
@@ -87,20 +90,12 @@ public class HomeController
     }
 
     @RequestMapping("/viewAllCourses")
-    public String showAllCourses(HttpSession session){
+    public String showAllCourses(HttpSession session, Authentication auth){
         System.out.println("Mapping all courses");
-        User user = (User) session.getAttribute("User");
+        User user = new User(auth);
         List<Course> courses = courseDao.getCoursesForUser(user);
         session.setAttribute("courses", courses);
         return "allCourses";
     }
 
-//    @RequestMapping("/logout")
-//    public String logout(HttpSession session){
-//        // TODO: fix the logout button disappearing. This happens because the security context has been cleared. Need to refresh with notValidated
-//        SecurityContextHolder.clearContext();
-//        session.removeAttribute("User");
-//        session.invalidate();
-//        return "static/home";
-//    }
 }

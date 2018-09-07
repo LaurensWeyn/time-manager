@@ -15,11 +15,11 @@
     <c:if test="${timeslot.parentCourse.id == param.get('courseId')}">
     <c:forEach var="i" begin="0" end="${fn:length(timeslot.daysOfWeek)}" step="1">
         <c:if test="${fn:substring(timeslot.daysOfWeek, i, i + 1) == 'Y'}">
-            <div class="card-body"style="display:inline;"><span class="badge badge-pill badge-danger">Mo</span>
-            </div> <!-- TODO: find a way to make the Mo dynamic to Mo, Tu, We, Th, Fr...-->
+            <div class="card-body"style="display:inline;"><span class="badge badge-pill badge-danger">${fn:substring("MoTuWeThFrSaSu", i * 2, i * 2 + 2)}</span>
+            </div> <!-- Days of the week dynamic, but could be made neater-->
         </c:if>
         <c:if test="${fn:substring(timeslot.daysOfWeek, i, i + 1) != 'Y'}">
-            <div class="card-body"style="display:inline;"><span class="badge badge-pill badge-secondary">Mo</span>
+            <div class="card-body"style="display:inline;"><span class="badge badge-pill badge-secondary">${fn:substring("MoTuWeThFrSaSu", i * 2, i * 2 + 2)}</span>
             </div>
         </c:if>
 

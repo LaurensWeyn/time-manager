@@ -73,7 +73,7 @@ public class TimeslotDao
     {
         if(dayOfWeek >= 7 || dayOfWeek < 0)
             throw new IllegalArgumentException("Invalid dayOfWeek number: " + dayOfWeek);
-        List<Timeslot> all = getAllTimeslotsForUser(user);//TODO this could be more efficient
+        List<Timeslot> all = getAllTimeslotsForUser(user);//could be more efficient
         List<Timeslot> match = new ArrayList<>();
         for(Timeslot slot:all)
             if(slot.isOnDay(dayOfWeek))

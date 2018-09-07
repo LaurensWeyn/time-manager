@@ -31,7 +31,7 @@
     <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
     <security:intercept-url pattern="/static/**" access="permitAll"/>
 
-    <security:intercept-url pattern="/login" access="!isAuthenticated()"/> <!-- Do not allow logged in users to access TODO: check best practices-->
+    <security:intercept-url pattern="/login" access="!isAuthenticated()"/> <!-- Do not allow logged in users to access-->
     <security:intercept-url pattern="/logout" access="permitAll"/>
     <security:intercept-url pattern="/createAccount" access="permitAll"/>
     <security:intercept-url pattern="/doCreateAccount" access="permitAll"/>
@@ -46,6 +46,7 @@
     <!-- Stuff for events -->
     <security:intercept-url pattern="/completeEvent" access="isAuthenticated()"/>
     <security:intercept-url pattern="/editEvent" access="isAuthenticated()"/>
+    <security:intercept-url pattern="/updateEventInfo" access="isAuthenticated()"/>
     <!-- Stuff for courses -->
     <security:intercept-url pattern="/viewCourse" access="isAuthenticated()"/> <!-- Full course overview-->
     <security:intercept-url pattern="/addCourse" access="isAuthenticated()"/> <!-- Add course page-->
@@ -53,8 +54,8 @@
     <security:intercept-url pattern="/viewAllCourses" access="isAuthenticated()"/> <!-- view all courses of user-->
     <security:intercept-url pattern="/removeCourse" access="isAuthenticated()"/> <!-- Delete course-->
     <!-- Timeslots-->
-    <security:intercept-url pattern="/addTimeslot" access="isAuthenticated()"/> <!-- Adding a timeslot to a course-->
     <security:intercept-url pattern="/doAddTimeslot" access="isAuthenticated()"/>
+    <security:intercept-url pattern="/addTimeslot" access="isAuthenticated()"/> <!-- Adding a timeslot to a course-->
 
     <!--By default, for security, all urls require expliit authentication levels. Leave at bottom as 'fallback'-->
     <security:intercept-url pattern="/**" access="denyAll"/>
@@ -62,6 +63,6 @@
 
     <!--In charge of the actual login page-->
     <security:form-login login-page="/login" authentication-failure-url="/login?error=true"/>
-    <sec:logout logout-success-url="/" logout-url="/logout"/><!--FIXME logout not working for some weird reason-->
+    <sec:logout logout-success-url="/" logout-url="/logout"/>
   </security:http>
 </beans>

@@ -70,7 +70,7 @@ public class LoginController
             return "static/createAccount";
         }
 
-        return "static/home";//TODO create account success page
+        return "static/login";
     }
 
     public static void main(String[] args)

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
@@ -47,7 +47,10 @@
                     <a class="btn btn-secondary" role="button" href="${pageContext.request.contextPath}/createAccount">Create Account</a>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
-                    <a class="btn btn-primary" role="button" href="${pageContext.request.contextPath}/logout">Logout</a>
+                    <%--<a class="btn btn-primary" role="button" href="${pageContext.request.contextPath}/logout">Logout</a>--%>
+                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                        <input class="btn btn-primary" type="submit" value="Logout" />
+                    </form:form>
                 </sec:authorize>
             </li>
         </ul>
