@@ -81,6 +81,7 @@ SET character_set_client = utf8mb4 ;
 CREATE TABLE `events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(60) DEFAULT NULL,
+  `priority` int(11) DEFAULT NULL,
   `courseid` int(11) DEFAULT NULL,
   `name` varchar(60) DEFAULT NULL,
   `due` int(11) DEFAULT NULL,
@@ -99,7 +100,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'admin',1,'Capstone Handin',1534438800,95,'The Student Time Management System',1,NULL),(2,'admin',1,'Capstone Presentation',1534424400,100,'The Student Time Management System',1,NULL),(3,'admin',2,'WebAssign assignment',1534593600,40,'About numbers and stuff idk',1,NULL),(4,'admin',2,'Weekly Tutorial',1534438800,10,'Usual weekly tutorial',2,null);
+INSERT INTO `events` VALUES (1,'admin',1,7,'Capstone Handin',1534438800,95,'The Student Time Management System',1,NULL),(2,'admin',1,5,'Capstone Presentation',1534424400,100,'The Student Time Management System',1,NULL),(3,'admin',2,2,'WebAssign assignment',1534593600,40,'About numbers and stuff idk',1,NULL),(4,'admin',2,1,'Weekly Tutorial',1534438800,10,'Usual weekly tutorial',2,null);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 

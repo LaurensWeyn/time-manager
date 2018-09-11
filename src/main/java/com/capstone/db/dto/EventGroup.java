@@ -2,10 +2,7 @@ package com.capstone.db.dto;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class EventGroup implements Comparable<EventGroup>
 {
@@ -22,6 +19,15 @@ public class EventGroup implements Comparable<EventGroup>
 
     public static List<EventGroup> buildEventGroups(List<Event> events)
     {
+        for (Event event:events){
+            event.setRelativePriority(); // Calculate the relative priorities first
+        }
+        Collections.sort(events, new Comparator<Event>() {
+            @Override
+            public int compare(Event o1, Event o2) {
+                return (int) o1.getRelativePriority()- (int) o2.getRelativePriority();
+            }
+        }); // Sort events list based on relative priority. This should have our stuff at the other end sorted based on priority.
         ArrayList<EventGroup> groups = new ArrayList<>();
         for(Event event:events)
         {

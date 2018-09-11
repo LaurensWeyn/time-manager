@@ -1,5 +1,7 @@
 package com.capstone.db.dto;
 
+import com.capstone.util.Prioritizer;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +14,7 @@ public class Event implements Comparable<Event>
     private String name;
     private String description;
     private Date due;
+    private long relativePriority;
     private int type;
     private int progress;
     private int color;
@@ -22,6 +25,12 @@ public class Event implements Comparable<Event>
     {
         return id;
     }
+
+    public void setRelativePriority() {
+        relativePriority = Prioritizer.getRelativePriority(this);
+    }
+
+    public long getRelativePriority(){return relativePriority;}
 
     public void setId(long id)
     {
