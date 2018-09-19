@@ -160,4 +160,20 @@ public class EventForm
     {
         this.metaUsername = metaUsername;
     }
+
+    @Override
+    public String toString()
+    {
+        return "EventForm{" +
+                "name='" + name + '\'' +
+                ", due=" + due +
+                ", progress=" + progress +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                ", color=" + color +
+                ", metaCourseId=" + metaCourseId +
+                ", metaId=" + metaId +
+                ", metaUsername='" + metaUsername + '\'' +
+                '}';
+    }
 }

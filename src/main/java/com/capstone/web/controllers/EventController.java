@@ -46,9 +46,11 @@ public class EventController {
 
     @RequestMapping("/updateEventInfo")
     public String updateCourseInfo(HttpSession session, Model model, EventForm eventForm, HttpServletRequest request, Authentication auth) {
+	    User user = new User(auth);
 	    if(request.getParameter("eventId").equals("0"))//create
         {
             //TODO set courseID!!!
+            eventForm.setMetaUsername(user.getUsername());
             long newID = eventDao.createEvent(eventForm);
             System.out.println("event created with ID " + newID);
         }
@@ -66,18 +68,21 @@ public class EventController {
                 err.printStackTrace();
             }
         }
-        return HomeController.prepareDashboard(session, timeslotDao, eventDao, new User(auth));
+        return HomeController.prepareDashboard(session, timeslotDao, eventDao, user);
     }
 
     @RequestMapping("/editEvent")
-    public String viewEventEdit(Model model, HttpServletRequest request, HttpSession session, Authentication auth) {
-        EventForm form = new EventForm(eventDao.getEventByID(Long.parseLong(request.getParameter("eventId"))));
+    public String viewEventEdit(Model model, HttpServletRequest request, HttpSession session, Authentication auth)
+    {
+	    long eventID = Long.parseLong(request.getParameter("eventId"));
+	    Event event = eventDao.getEventByID(eventID);
+        EventForm form = new EventForm(event);
         form.setMetaCourseId(Long.parseLong(request.getParameter("courseId")));
-        form.setMetaId(Long.parseLong(request.getParameter("eventId")));
+        form.setMetaId(eventID);
         form.setMetaUsername(auth.getName());
         model.addAttribute("eventForm", form);
         model.addAttribute("course", courseDao.getCourseByID(Integer.parseInt(request.getParameter("courseId"))));
-        model.addAttribute("event", eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))));
+        model.addAttribute("event", event);
         model.addAttribute("courses", courseDao.getCoursesForUser(new User(auth)));
         return "assignmentEventEdit";
     }
