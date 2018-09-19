@@ -8,8 +8,8 @@ public class EventGroup implements Comparable<EventGroup>
 {
     private Date date;
     private List<Event> events = new ArrayList<>();
-    private static final DateFormat df = new SimpleDateFormat("EEEEE, MMMMM dd");
-    private static final DateFormat dfCompare = new SimpleDateFormat("yyyyMMdd");
+    private static final DateFormat df = new SimpleDateFormat("EEEEE, MMMMM dd", Locale.ENGLISH);
+    private static final DateFormat dfCompare = new SimpleDateFormat("yyyyMMdd", Locale.ENGLISH);
 
 
     public EventGroup(Date date)
@@ -22,12 +22,6 @@ public class EventGroup implements Comparable<EventGroup>
         for (Event event:events){
             event.setRelativePriority(); // Calculate the relative priorities first
         }
-        Collections.sort(events, new Comparator<Event>() {
-            @Override
-            public int compare(Event o1, Event o2) {
-                return (int) o1.getRelativePriority()- (int) o2.getRelativePriority();
-            }
-        }); // Sort events list based on relative priority. This should have our stuff at the other end sorted based on priority.
         ArrayList<EventGroup> groups = new ArrayList<>();
         for(Event event:events)
         {
@@ -56,6 +50,15 @@ public class EventGroup implements Comparable<EventGroup>
         Collections.sort(groups);
         //return result
         return groups;
+    }
+
+    public static EventGroup buildTodoEventGroup(List<Event> events)
+    {
+        events.sort(null);//sort by dates first such that items with same priority are still in date order
+        events.sort(Comparator.comparingInt(o -> (int) o.getRelativePriority())); // Sort events list based on relative priority. This should have our stuff at the other end sorted based on priority.
+        EventGroup group = new EventGroup(null);
+        group.events = events;
+        return group;
     }
 
 

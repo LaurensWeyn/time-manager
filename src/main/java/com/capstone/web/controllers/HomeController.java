@@ -77,15 +77,17 @@ public class HomeController
         Collections.sort(timeslots);//should probably be done database side later
         session.setAttribute("timeslots", timeslots);
 
-        List<EventGroup> events = EventGroup.buildEventGroups(eventDao.getAllEventsForUser(user));
-        session.setAttribute("upcomingEvents", events);
+        List<Event> allEvents = eventDao.getAllEventsForUser(user);
+        session.setAttribute("upcomingEvents", EventGroup.buildEventGroups(allEvents));
+        session.setAttribute("todoList", EventGroup.buildTodoEventGroup(allEvents));
 
         return "dashboard";
     }
 
     @RequestMapping("calendar")
-    public String showCalendar(HttpSession session){
+    public String showCalendar(HttpSession session, Authentication auth){
         System.out.println("Mapping Calendar");
+        session.setAttribute("events", eventDao.getAllEventsForUser(new User(auth)));
         return "calendar";
     }
 

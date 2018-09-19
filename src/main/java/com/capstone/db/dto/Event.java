@@ -5,6 +5,7 @@ import com.capstone.util.Prioritizer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Event implements Comparable<Event>
@@ -19,7 +20,8 @@ public class Event implements Comparable<Event>
     private int progress;
     private int color;
 
-    private static final DateFormat df = new SimpleDateFormat("HH:MM");
+    private static final DateFormat df = new SimpleDateFormat("hh:mm", Locale.ENGLISH);
+    private static final DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss", Locale.ENGLISH);
 
     public long getId()
     {
@@ -110,6 +112,11 @@ public class Event implements Comparable<Event>
     public String getDueTimeString()
     {
         return df.format(due);
+    }
+
+    public String getDueCalString()
+    {
+        return df2.format(due);
     }
 
     @Override

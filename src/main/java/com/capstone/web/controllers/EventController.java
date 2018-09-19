@@ -46,29 +46,51 @@ public class EventController {
 
     @RequestMapping("/updateEventInfo")
     public String updateCourseInfo(HttpSession session, Model model, EventForm eventForm, HttpServletRequest request, Authentication auth) {
-        Event event = eventDao.getEventByID(Long.parseLong(request.getParameter("eventId")));
-        Course course = courseDao.getCourseByID(Long.parseLong(request.getParameter("courseId")));
-        //NOTE why was the form updated by the original event? It goes this way around
-        eventForm.setMetaId(event.getId());
-        //model.addAttribute("courseForm", eventForm);
-        model.addAttribute("courseForm", new CourseForm(course));
-        try {
-            eventDao.editEvent(eventForm);
-        } catch (Exception err) {
-            err.printStackTrace();
+	    if(request.getParameter("eventId").equals("0"))//create
+        {
+            //TODO set courseID!!!
+            long newID = eventDao.createEvent(eventForm);
+            System.out.println("event created with ID " + newID);
+        }
+        else//update
+        {
+            Event event = eventDao.getEventByID(Long.parseLong(request.getParameter("eventId")));
+            Course course = courseDao.getCourseByID(Long.parseLong(request.getParameter("courseId")));
+            //NOTE why was the form updated by the original event? It goes this way around
+            eventForm.setMetaId(event.getId());
+            //model.addAttribute("courseForm", eventForm);
+            model.addAttribute("courseForm", new CourseForm(course));
+            try {
+                eventDao.editEvent(eventForm);
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
         }
         return HomeController.prepareDashboard(session, timeslotDao, eventDao, new User(auth));
     }
 
     @RequestMapping("/editEvent")
     public String viewEventEdit(Model model, HttpServletRequest request, HttpSession session, Authentication auth) {
-        EventForm form = new EventForm();
+        EventForm form = new EventForm(eventDao.getEventByID(Long.parseLong(request.getParameter("eventId"))));
         form.setMetaCourseId(Long.parseLong(request.getParameter("courseId")));
         form.setMetaId(Long.parseLong(request.getParameter("eventId")));
         form.setMetaUsername(auth.getName());
         model.addAttribute("eventForm", form);
         model.addAttribute("course", courseDao.getCourseByID(Integer.parseInt(request.getParameter("courseId"))));
         model.addAttribute("event", eventDao.getEventByID(Integer.parseInt(request.getParameter("eventId"))));
+        model.addAttribute("courses", courseDao.getCoursesForUser(new User(auth)));
+        return "assignmentEventEdit";
+    }
+
+    @RequestMapping("/createEvent")
+    public String createEvent(Model model, HttpServletRequest request, HttpSession session, Authentication auth) {
+        EventForm form = new EventForm();
+        form.setMetaCourseId(-1);
+        form.setMetaId(-1);
+        form.setMetaUsername(auth.getName());
+        model.addAttribute("eventForm", form);
+        model.addAttribute("course", new Course());
+        model.addAttribute("event", new Event());
         model.addAttribute("courses", courseDao.getCoursesForUser(new User(auth)));
         return "assignmentEventEdit";
     }

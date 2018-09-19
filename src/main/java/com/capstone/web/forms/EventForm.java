@@ -4,6 +4,12 @@ import com.capstone.db.dto.Course;
 import com.capstone.db.dto.Event;
 import com.capstone.db.dto.User;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class EventForm
 {
     private String name;
@@ -20,7 +26,7 @@ public class EventForm
 
     public EventForm()
     {
-
+        due = (int)(new Date().getTime() / 1_000L);//sensible default value for UI
     }
 
     public EventForm(String name, int due, String username, long courseId)
@@ -67,6 +73,22 @@ public class EventForm
     public void setDue(int due)
     {
         this.due = due;
+    }
+
+    private static final DateFormat inputFormat = new SimpleDateFormat("dd MMMMM yyyy - hh:mm", Locale.ENGLISH);
+
+    public void setDueInput(String input)
+    {
+        try {
+            this.due = (int)(inputFormat.parse(input).getTime() / 1_000L);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getDueInput()
+    {
+        return inputFormat.format(new Date(due * 1_000L));
     }
 
     public int getProgress()

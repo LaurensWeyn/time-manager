@@ -24,19 +24,19 @@
                 <%--@elvariable id="event" type="com.capstone.db.dto.Event"--%>
             <sf:form method="post" action="${pageContext.request.contextPath}/updateEventInfo?eventId=${event.id}&courseId=${course.id}"
                      modelAttribute="eventForm">
-            <h4 style="text-align: center;">Edit Assignment: <c:out value="${event.name}"/></h4>
+            <h4 style="text-align: center;">Edit Event: <c:out value="${event.name}"/></h4>
             <div class="card" style="max-width:75%;width:75%;margin-left:12.5%;">
                 <div class="card-body">
                     <div class="field-name">Assignment Name</div>
                     <div class="form-group">
-                        <sf:input path="name" class="form-control" placeholder="${event.name}"/>
+                        <sf:input path="name" class="form-control"/>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="field-name">Assignment Due Date:</div>
                     <div class="form-group">
                         <div class="input-append date form_datetime"  id="dateInput">
-                            <input class="form-control" size="28" type="text" value="" onchange="getDate()" id="dateString" readonly>
+                            <sf:input class="form-control" size="28" type="text" value="" onchange="getDate()" id="dateString" path="dueInput" readonly="true" />
                             <span class="add-on"><i class="icon-th"></i></span>
                         </div>
                         <script type="text/javascript">
@@ -56,7 +56,7 @@
                 </div>
                     <label for="comment" style="margin-left: 1.6%;">Description:</label>
                 <div class="form-group" style="max-width:97% ;">
-                    <textarea class="form-control" rows="5" id="comment" placeholder="${event.description}" style="margin-left: 1.5%;margin-right:1.5%;"></textarea>
+                    <sf:textarea class="form-control" rows="5" id="comment" style="margin-left: 1.5%;margin-right:1.5%;" path="description"/>
                 </div>
                 <form>
                     <label for="customRange" style="margin-left: 22px;">Assignment Progress</label>
@@ -71,7 +71,7 @@
                         <%@include file="static/completionTimes.jsp"%>
                     </select>
                 </div>
-                <div class="form-group"style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
+                <div class="form-group" style="max-width:75%;width:75%;margin-left:12.5%;white-space:nowrap;display:inline;">
                     <label for="importance">Importance:</label>
                     <select class="form-control" id="importance">
                         <%@include file="static/importance.jsp"%>

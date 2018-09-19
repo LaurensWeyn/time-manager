@@ -35,8 +35,8 @@
                 <div class="dropdown-menu" aria-labelledby="addMenu">
                     <a class="dropdown-item" href="/addCourse">Course</a>
                     <%--<a class="dropdown-item" href="#">To-Do</a>
-                    <a class="dropdown-item" href="/addTimeslot">Time-slot</a>
-                    <a class="dropdown-item" href="#">Event</a>--%>
+                    <a class="dropdown-item" href="/addTimeslot">Time-slot</a>--%>
+                    <a class="dropdown-item" href="/createEvent">Event</a>
                 </div>
             </li>
         </ul>

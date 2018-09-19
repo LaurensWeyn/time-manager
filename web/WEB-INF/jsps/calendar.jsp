@@ -24,9 +24,22 @@
             $('#calendar').fullCalendar({
                 // put your options and callbacks here
                 googleCalendarApiKey: 'AIzaSyDr6PBEBQSv5yRO9NI71DHSlqcw1dmP02g',
-                events: {
-                    googleCalendarId: 'badenhorst.alec@gmail.com' // Syncing works, although the user would need to make their calendar public and put their calendar id in here.
-                },
+                events: [
+                    <%--@elvariable id="events" type="java.util.List<com.capstone.db.dto.Event>"--%>
+                    <c:forEach var="item" items="${events}">
+                    {
+                        title: "<c:out value="${item.name}"/>",
+                        start: "<c:out value="${item.dueCalString}"/>",
+                        allDay: false
+                    },
+                    </c:forEach>
+                    {
+                        googleCalendarId: 'badenhorst.alec@gmail.com' // Syncing works, although the user would need to make their calendar public and put their calendar id in here.
+                    },
+
+                ],
+                color: 'yellow',   // an option!
+                textColor: 'black', // an option!
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -34,7 +47,7 @@
                 },
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
-                eventLimit: true, // allow "more" link when too many events
+                eventLimit: true // allow "more" link when too many events
             })
 
         });
