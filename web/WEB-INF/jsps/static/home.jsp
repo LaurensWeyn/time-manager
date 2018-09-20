@@ -23,6 +23,7 @@
             padding-top: 50px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/homepage.css">
 </head>
 <body>
 
@@ -31,19 +32,34 @@
 
 <div class="container">
 
-    <h1 class="page-header">Student Time Management System
-        <small class="lightText">STMS</small>
-    </h1>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h2>What is STMS?</h2>
-            <div class="fakeimg">Super awesome screenshot of the UI would go here</div>
-            <p>Why, it's this amazing thing that would probably be described in great detail here if I could be bothered! Lots of text, perhaps even a whole paragraph would be written here about how awesome this program is, why it's good, and why you should totally use it instead of something like Google Calendar. But right now, all I really need here is a block of text to check if this webpage formats text correctly and looks neat, so instead of writing up such a description, I've written this block of text. In fact, I'm still typing it up now, because I didn't feel it was long enough yet. Perhaps it is long enough now, though.</p>
-        </div>
-    </div>
+    <img src="/static/welcome.png" alt="Welcome to the Student Time Management System" width="800" height="350">
 
 </div>
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="/static/dashboard%20(2).png" alt="First slide" height="600">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/static/courseAndEvent.png" alt="Second slide" height="600">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="/static/Calendar.png" alt="Third slide" height="600">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+
 <p style="margin-bottom:50px;"></p>
 </body>
 </html>

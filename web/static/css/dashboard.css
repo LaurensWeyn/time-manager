@@ -9,6 +9,7 @@
 .progress-buttons{
     float: right;
     margin-left: 1em;
+    padding: 15px 32px;
 }
 
 .progress {

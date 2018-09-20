@@ -25,9 +25,9 @@
         <div class="card">
             <div class="card-body">
                 <div class="progress-label"><c:out value="${event.name}"/></div>
-                <div class="progress">
-                    <div class="progress-bar" style="width:${event.progress}%">${event.progress}%</div>
-                </div>
+                    <%--<div class="progress">
+                        <div class="progress-bar" style="width:${event.progress}%">${event.progress}%</div>
+                    </div>--%>
                 <div class="progress-buttons button-bar"><a href="${pageContext.request.contextPath}/completeEvent?eventId=${event.id}&courseId=${event.parentCourse.id}" id="${event.id}" type="button" class="btn btn-success">Done</a>
                     <a href="${pageContext.request.contextPath}/editEvent?eventId=${event.id}&courseId=${event.parentCourse.id}" type="button" class="btn btn-info">Edit</a>
                 </div>
