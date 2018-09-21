@@ -46,7 +46,7 @@
                     right: 'month,basicWeek,basicDay'
                 },
                 navLinks: true, // can click day/week names to navigate views
-                editable: true,
+                editable: false,
                 eventLimit: true // allow "more" link when too many events
             })
 
